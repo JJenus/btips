@@ -1,0 +1,41 @@
+.glide__slide {
+	&:has(+ .glide__slide--active) {
+		
+		.card {
+			background: #eee;
+			&::before {
+				left: -20px;
+				height: 100%;
+				width: 25px;
+				-webkit-transform: rotateY(-45deg);
+				transform: rotateY(-45deg);
+				transform-origin: center right;
+				-webkit-transform-origin: center right;
+			}
+
+			-webkit-transform: perspective(800px) rotateY(25deg);
+			transform: perspective(800px) rotateY(25deg);
+			
+		}
+	}
+	&.glide__slide--active {
+		cursor: pointer;
+		& + .glide__slide {
+			.card {
+				&::before {
+					right: -20px;
+					height: 100%;
+					width: 25px;
+					-webkit-transform: rotateY(45deg);
+					transform: rotateY(45deg);
+					-webkit-transform-origin: center left;
+					transform-origin: center left;
+				}
+				-webkit-transform: perspective(800px) rotateY(-25deg);
+				transform: perspective(800px) rotateY(-25deg);
+				
+			}
+		}
+	}
+}
+
