@@ -175,7 +175,7 @@
 
 							<div class="fs-6 text-gray-700">
 								Subscribe to a plan now.
-								<a href="#!">Click on Subscribe</a>
+								<a href="#subscription_plans">Click to Subscribe</a>
 							</div>
 						</div>
 						<!--end::Content-->
@@ -234,8 +234,6 @@
 
 									<span
 										class="fs-3x fw-bold"
-										data-kt-plan-price-month="39"
-										data-kt-plan-price-annual="399"
 									>
 										{{ plan.subscription.amount }}
 									</span>
