@@ -28,7 +28,6 @@
 		form.value.userId = user.value.id;
 		form.value.subscriptionId = props.plan.id;
 
-		// //console.log(form.value);
 
 		let config = {
 			method: "POST",
@@ -55,7 +54,7 @@
 				}
 			})
 			.catch((error) => {
-				//console.log(error);
+				window.debug.log(error);
 			})
 			.finally(() => {
 				loading.value = false;
@@ -71,11 +70,11 @@
 		axios
 			.request(config)
 			.then((res) => {
-				//console.log(res);
+				window.debug.log(res);
 				window.location.reload();
 			})
 			.catch((error) => {
-				//console.log(error);
+				window.debug.log(error);
 			})
 			.finally(() => {});
 	}
@@ -86,12 +85,31 @@
 		<div class="d-flex h-100 align-items-center">
 			<!--begin::Option-->
 			<div
-				class="w-100 d-flex flex-column flex-center rounded-3 bg-gray-100 py-15 px-10"
+				class="w-100 d-flex position-relative flex-column shadow flex-center rounded-3 bg-gray-100 py-15 px-10"
 			>
+				<span
+					v-if="admin"
+					class="ms-3 position-absolute top-0 end-0 m-3 me-5"
+				>
+					<span
+						style="font-size: xx-small"
+						:class="
+							plan.type == 'personal'
+								? 'bg-warning'
+								: 'bg-primary'
+						"
+						class="badge text-miuted pt-1"
+						>{{
+							plan.type == "primary" ? "general" : plan.type
+						}}</span
+					>
+				</span>
 				<!--begin::Heading-->
 				<div class="mb-7 text-center">
 					<!--begin::Title-->
-					<h1 class="text-dark mb-5 fw-bolder">{{ plan.title }}</h1>
+					<h1 class="text-dark mb-5 fw-bolder">
+						{{ plan.title }}
+					</h1>
 					<!--end::Title-->
 
 					<!--begin::Description-->
@@ -118,6 +136,7 @@
 
 				<!--begin::Select-->
 				<button
+					v-if="!admin"
 					:class="loading ? 'disabled' : ''"
 					@click="join()"
 					class="btn btn-primary btn-sm fw-bold rounded-1"
@@ -129,6 +148,19 @@
 					></span>
 				</button>
 				<!--end::Select-->
+				<button
+					v-else
+					type="button"
+					:class="loading ? 'disabled' : ''"
+					@click="delet()"
+					class="btn btn-light-danger btn-sm fw-bold rounded-1"
+				>
+					<span v-if="!loading">Delete</span>
+					<span
+						v-else
+						class="spinner-border spinner-border-sm"
+					></span>
+				</button>
 			</div>
 			<!--end::Option-->
 		</div>
