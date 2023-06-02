@@ -4,6 +4,15 @@
 	import { user } from "../../stores/user";
 	import UserMenu from "./UserMenu.vue";
 
+	const props = defineProps({
+		account: {
+			require: true,
+		},
+		navs: {
+			required: true,
+		},
+	});
+
 	const avatar = ref(user.defaultAvatar());
 </script>
 
@@ -62,7 +71,7 @@
 							<!--begin::Card body-->
 							<div class="card-body py-10">
 								<!--begin::Menu-->
-								<Navs />
+								<Navs :navs="navs" />
 								<!--end::Menu-->
 							</div>
 							<!--end::Card body-->
@@ -139,7 +148,9 @@
 						<!--end::Item-->
 
 						<!--begin::Item-->
-						<li class="breadcrumb-item text-muted">Overview</li>
+						<li class="breadcrumb-item text-muted">
+							{{ account }}
+						</li>
 						<!--end::Item-->
 					</ul>
 					<!--end::Breadcrumb-->

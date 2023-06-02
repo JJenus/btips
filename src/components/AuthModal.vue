@@ -71,7 +71,7 @@ function register() {
 			} else {
 				user.login(response.data);
 				alert.success("Signing you in. Please wait.");
-				window.location.href = "/app";
+				window.location.href = "/app#subscription_plans";
 			}
 		})
 		.catch(function (error) {
@@ -119,7 +119,7 @@ function sumitLogin() {
 			} else {
 				user.login(response.data);
 				alert.success("Authorized");
-				window.location.href = "/app";
+				window.location.href = "/app#subscription_plans	";
 			}
 		})
 		.catch(function (error) {

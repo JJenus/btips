@@ -1,124 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>
-			Good – Bootstrap 5 HTML Asp.Net Core, Blazor, Django & Flask Admin
-			Dashboard Template by Keenthemes
-		</title>
-		<meta charset="utf-8" />
-		<meta
-			name="description"
-			content="Good admin dashboard live demo. Check out all the features of the admin panel. A large number of settings, additional services and widgets."
-		/>
-		<meta
-			name="keywords"
-			content="Good, bootstrap, bootstrap 5, admin themes, Asp.Net Core & Django starter kits, admin themes, bootstrap admin, bootstrap dashboard, bootstrap dark mode"
-		/>
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta property="og:locale" content="en_US" />
-		<meta property="og:type" content="article" />
-		<meta
-			property="og:title"
-			content="Good - Bootstrap 5 HTML Asp.Net Core, Blazor, Django & Flask Admin Dashboard Template"
-		/>
-		<meta
-			property="og:url"
-			content="https://themes.getbootstrap.com/product/good-bootstrap-5-admin-dashboard-template"
-		/>
-		<meta property="og:site_name" content="Keenthemes | Good" />
-		<link rel="canonical" href="index.html" />
-		<link rel="shortcut icon" href="/assets/media/logos/favicon.ico" />
+  <head>
+    <meta charset="utf-8" />
+    <title>BettorsTips - Accurate Football Predictions and Betting Tips</title>
+    <meta
+      name="description"
+      content="Get accurate football predictions and expert betting tips on BettorsTips. Increase your chances of winning with our reliable match analysis and insights."
+    />
+    <meta
+      name="keywords"
+      content="accurate football predictions, betting tips, football betting, match analysis, expert predictions, winning tips, soccer predictions, sports betting, football tips"
+    />
+    <meta name="author" content="BettorsTips" />
+    <meta name="robots" content="index, follow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<!--begin::Fonts-->
-		<!-- <link
-			rel="stylesheet"
-			href="../../fonts.googleapis.com/css7b91.css?family=Inter:300,400,500,600,700"
-		/> -->
-		<!--end::Fonts-->
+    <!-- Facebook Meta Tags -->
+    <meta
+      property="og:title"
+      content="BettorsTips - Accurate Football Predictions and Betting Tips"
+    />
+    <meta property="og:site_name" content="BettorsTips" />
+    <meta
+      property="og:description"
+      content="Get accurate football predictions and expert betting tips on BettorsTips. Increase your chances of winning with our reliable match analysis and insights."
+    />
+    <meta
+      property="og:image"
+      content="https://thebettorstips.com/assets/favicon-logo.png"
+    />
+    <meta property="og:url" content="https://thebettorstips.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
 
-		<!--begin::Global Stylesheets Bundle(used by all pages)-->
-		<link
-			href="/assets/plugins/global/plugins.bundle.css"
-			rel="stylesheet"
-			type="text/css"
-		/>
-		<link
-			href="/assets/css/style.bundle.css"
-			rel="stylesheet"
-			type="text/css"
-		/>
-	</head>
-	<body
-		data-kt-name="bettorstip"
-		id="kt_app_body"
-		data-theme="light"
-		class="overflow-x-hidden"
-		style="overflow-x: hidden;"
-	>
-		<script>
-			var defaultThemeMode = "light";
-			var themeMode;
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="Top Fixed Picks" />
+    <meta
+      name="twitter:title"
+      content="BettorsTips - Accurate Football Predictions and Betting Tips"
+    />
+    <meta
+      name="twitter:description"
+      content="Get accurate football predictions and expert betting tips on BettorsTips. Increase your chances of winning with our reliable match analysis and insights."
+    />
+    <meta
+      name="twitter:image"
+      content="https://thebettorstips.com/assets/favicon-logo.png"
+    />
+    <meta name="twitter:url" content="https://thebettorstips.com" />
+    <meta name="twitter:site" content="@BettorsTips" />
 
-			if (document.documentElement) {
-				if (document.documentElement.hasAttribute("data-theme-mode")) {
-					themeMode =
-						document.documentElement.getAttribute(
-							"data-theme-mode"
-						);
-				} else {
-					if (localStorage.getItem("data-theme") !== null) {
-						themeMode = localStorage.getItem("data-theme");
-					} else {
-						themeMode = defaultThemeMode;
-					}
-				}
+    <!-- GOOGLE TAGS -->
+    <meta
+      itemprop="name"
+      content="BettorsTips - Accurate Football Predictions and Betting Tips"
+    />
+    <meta
+      itemprop="description"
+      content="Get accurate football predictions and expert betting tips on BettorsTips. Increase your chances of winning with our reliable match analysis and insights."
+    />
+    <meta
+      itemprop="image"
+      content="https://thebettorstips.com/assets/favicon-logo.png"
+    />
 
-				if (themeMode === "system") {
-					themeMode = window.matchMedia(
-						"(prefers-color-scheme: dark)"
-					).matches
-						? "dark"
-						: "light";
-				}
+    <link rel="canonical" href="index.html" />
 
-				document.documentElement.setAttribute("data-theme", themeMode);
-			}
-		</script>
-		<div id="app"></div>
+    <!-- ===============================================-->
+    <!--    Favicons-->
+    <!-- ===============================================-->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon-32x32.png"
+    />
 
-  </div>
-  <!--end::Engage toolbar--><!--begin::Scrolltop-->
-  <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
-    <!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
-  <span class="svg-icon">
-	<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-		<rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1" transform="rotate(90 13 6)" fill="currentColor"/>
-		<path d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z" fill="currentColor"/>
-  </svg>
-  </span> 
-</div>
-		<script type="module" src="/src/main.js"></script>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/assets/favicon/favicon.ico"
+    />
+    <link rel="manifest" href="/assets/favicon/site.webmanifest" />
+    <meta
+      name="msapplication-TileImage"
+      content="/assets/favicon/mstile-150x150.png"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <!-- End layout styles -->
 
-		<!--begin::Javascript-->
-		<script>
-			var hostUrl = "/assets/index.html";
-		</script>
+    <!--begin::Fonts-->
 
-		<!--begin::Global Javascript Bundle(used by all pages)-->
-		<script src="/assets/plugins/global/plugins.bundle.js"></script>
-		<script src="/assets/js/scripts.bundle.js"></script>
-		<!--end::Global Javascript Bundle-->
+    <!--begin::Global Stylesheets Bundle(used by all pages)-->
+    <link
+      href="/assets/plugins/global/plugins.bundle.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/assets/css/style.bundle.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
 
-		<!--begin::Vendors Javascript(used by this page)-->
-		<!-- <script src="/assets/plugins/custom/fslightbox/fslightbox.bundle.js"></script> -->
-		<!--end::Vendors Javascript-->
+  <body
+    data-kt-name="bettorstip"
+    id="kt_app_body"
+    data-theme="light"
+    class="overflow-x-hidden"
+    style="overflow-x: hidden"
+  >
+    <script>
+      var defaultThemeMode = "light";
+      var themeMode;
 
-		<!--begin::Custom Javascript(used by this page)-->
-		<!-- <script src="/assets/js/custom/pages/pricing/general.js"></script> -->
-		<!-- <script src="/assets/js/widgets.bundle.js"></script>
+      if (document.documentElement) {
+        if (document.documentElement.hasAttribute("data-theme-mode")) {
+          themeMode = document.documentElement.getAttribute("data-theme-mode");
+        } else {
+          if (localStorage.getItem("data-theme") !== null) {
+            themeMode = localStorage.getItem("data-theme");
+          } else {
+            themeMode = defaultThemeMode;
+          }
+        }
+
+        if (themeMode === "system") {
+          themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+        }
+
+        document.documentElement.setAttribute("data-theme", themeMode);
+      }
+    </script>
+    <div id="app"></div>
+
+    <!--end::Engage toolbar--><!--begin::Scrolltop-->
+    <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
+      <!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
+      <span class="svg-icon">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            opacity="0.5"
+            x="13"
+            y="6"
+            width="13"
+            height="2"
+            rx="1"
+            transform="rotate(90 13 6)"
+            fill="currentColor"
+          />
+          <path
+            d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+
+    <!--begin::Javascript-->
+    <script>
+      var hostUrl = "/assets/index.html";
+    </script>
+
+    <!--begin::Global Javascript Bundle(used by all pages)-->
+    <script src="/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="/assets/js/scripts.bundle.js"></script>
+    <!--end::Global Javascript Bundle-->
+
+    <!--begin::Vendors Javascript(used by this page)-->
+    <!-- <script src="/assets/plugins/custom/fslightbox/fslightbox.bundle.js"></script> -->
+    <!--end::Vendors Javascript-->
+
+    <!--begin::Custom Javascript(used by this page)-->
+    <!-- <script src="/assets/js/custom/pages/pricing/general.js"></script> -->
+    <!-- <script src="/assets/js/widgets.bundle.js"></script>
 		<script src="/assets/js/custom/widgets.js"></script>
 		<script src="/assets/js/custom/apps/chat/chat.js"></script> -->
-		<!--end::Custom Javascript-->
-		<!--end::Javascript-->
-	</body>
+    <!--end::Custom Javascript-->
+    <!--end::Javascript-->
+  </body>
 </html>

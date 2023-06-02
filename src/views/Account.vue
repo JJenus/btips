@@ -1,58 +1,81 @@
 <script setup>
-import { user } from "../stores/user";
-import { onBeforeMount, provide, ref } from "vue";
-import axios from "axios";
+	import { user } from "../stores/user";
+	import { onBeforeMount, provide, ref } from "vue";
+	import axios from "axios";
 
-import Header from "../components/app/Header.vue";
-import Footer from "../components/app/Footer.vue";
-import Navs from "../components/app/Navs.vue";
-import Overview from "./app/Overview.vue";
-import Tips from "./app/Tips.vue";
-import ProfileDetails from "./app/ProfileDetails.vue";
-import Subscriptions from "./app/Subscriptions.vue";
-import DeactivateAccount from "./app/DeactivateAccount.vue";
+	import Header from "../components/app/Header.vue";
+	import Footer from "../components/app/Footer.vue";
+	import Navs from "../components/app/Navs.vue";
+	import Overview from "./app/Overview.vue";
+	import Tips from "./app/Tips.vue";
+	import ProfileDetails from "./app/ProfileDetails.vue";
+	import Subscriptions from "./app/Subscriptions.vue";
+	import DeactivateAccount from "./app/DeactivateAccount.vue";
 
-const env = import.meta.env;
+	const env = import.meta.env;
 
-const AppName = env.VITE_APP_NAME;
-const User = ref(user.getUser());
-provide("user", User);
+	const AppName = env.VITE_APP_NAME;
+	const User = ref(user.getUser());
+	provide("user", User);
 
-const bodyEl = document.querySelector("#kt_app_body");
-bodyEl.setAttribute("data-kt-app-layout", "overlay");
-bodyEl.setAttribute("data-kt-app-sidebar-push-header", "false");
-bodyEl.setAttribute("data-kt-app-sidebar-push-toolbar", "true");
-bodyEl.setAttribute("data-kt-app-sidebar-push-footer", "true");
+	const navs = ref([
+		{
+			name: "Overview",
+			target: "#overview",
+		},
+		{
+			name: "Tips",
+			target: "#tips",
+		},
+		{
+			name: "Subscription Plans",
+			target: "#subscription_plans",
+		},
+		{
+			name: "Profile Details",
+			target: "#profile_details",
+		},
+		{
+			name: "Deactivate Account",
+			target: "#deactivate_account",
+		},
+	]);
 
-async function loadUser() {
-	// console.log("User id: ", user.getUser().id)
-	let config = {
-		method: "GET",
-		url: `${env.VITE_BE_API}/users/${User.value.id}`,
-	};
+	const bodyEl = document.querySelector("#kt_app_body");
+	bodyEl.setAttribute("data-kt-app-layout", "overlay");
+	bodyEl.setAttribute("data-kt-app-sidebar-push-header", "false");
+	bodyEl.setAttribute("data-kt-app-sidebar-push-toolbar", "true");
+	bodyEl.setAttribute("data-kt-app-sidebar-push-footer", "true");
 
-	await axios
-		.request(config)
-		.then((response) => {
-			// console.log("User: ", User.value);
-			User.value = response.data;
-		})
-		.catch((error) => {
-			console.log(error);
-		});
-}
+	async function loadUser() {
+		// console.log("User id: ", user.getUser().id)
+		let config = {
+			method: "GET",
+			url: `${env.VITE_BE_API}/users/${User.value.id}`,
+		};
 
-async function mountChat() {
-	const plugin = document.createElement("script");
-	plugin.setAttribute("src", `//code.tidio.co/${env.VITE_TIDIO_KEY}.js`);
-	plugin.async = true;
-	document.head.appendChild(plugin);
-}
+		await axios
+			.request(config)
+			.then((response) => {
+				// console.log("User: ", User.value);
+				User.value = response.data;
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	}
 
-onBeforeMount(async () => {
-	mountChat();
-	await loadUser();
-});
+	async function mountChat() {
+		const plugin = document.createElement("script");
+		plugin.setAttribute("src", `//code.tidio.co/${env.VITE_TIDIO_KEY}.js`);
+		plugin.async = true;
+		document.head.appendChild(plugin);
+	}
+
+	onBeforeMount(async () => {
+		mountChat();
+		await loadUser();
+	});
 </script>
 
 <template>
@@ -61,7 +84,7 @@ onBeforeMount(async () => {
 		<!--begin::Page-->
 		<div class="app-page flex-column flex-column-fluid" id="kt_app_page">
 			<!--begin::Header-->
-			<Header />
+			<Header :navs="navs" :account="'Overview'" />
 			<!--end::Header-->
 			<!--begin::Wrapper-->
 			<div
@@ -92,7 +115,7 @@ onBeforeMount(async () => {
 									>
 										<!--begin::Nav-->
 										<div
-											class="card mb-6 mb-xl-9 d-none d-md-block nav-sticky-top"
+											class="card mb-6 mb-xl-9 d-none d-lg-block nav-sticky-top"
 											data-kt-sticky="true"
 											data-kt-sticky-name="account-settings"
 											data-kt-sticky-offset="{default: false, lg: 300}"
@@ -104,7 +127,7 @@ onBeforeMount(async () => {
 											<!--begin::Card body-->
 											<div class="card-body py-10 px-6">
 												<!--begin::Menu-->
-												<Navs />
+												<Navs :navs="navs" />
 												<!--end::Menu-->
 											</div>
 											<!--end::Card body-->
@@ -157,13 +180,13 @@ onBeforeMount(async () => {
 </template>
 
 <style scoped>
-@media (max-width: 767px) {
-	.c-sticky-top {
-		position: sticky;
-		top: 0;
-		right: 0;
-		left: 0;
-		z-index: 1030;
+	@media (max-width: 992px) {
+		.c-sticky-top {
+			position: sticky;
+			top: 0;
+			right: 0;
+			left: 0;
+			z-index: 1030;
+		}
 	}
-}
 </style>
