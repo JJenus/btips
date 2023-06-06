@@ -1,3 +1,64 @@
+<script setup>
+	import { onMounted, ref } from "vue";
+	import User from "../../components/admin/User.vue";
+	import axios from "axios";
+	import { util } from "../../stores/utility.js";
+
+	//CODES
+	const env = import.meta.env;
+
+	const users = ref([]);
+	const plans = ref([]);
+	const searchKey = ref("");
+
+	function loadUsers() {
+		let config = {
+			method: "GET",
+			url: `${env.VITE_BE_API}/users/`,
+		};
+
+		axios
+			.request(config)
+			.then((response) => {
+				console.log(response);
+				users.value = response.data;
+			})
+			.catch(function (error) {
+				console.log(error);
+			})
+			.finally(() => {});
+	}
+
+	function search(evt) {
+		util.search(".user", evt.target.value);
+		// console.log(evt.target.value);
+	}
+
+	async function loadPlans() {
+		let config = {
+			method: "GET",
+			url: `${env.VITE_BE_API}/subscriptions?type=personal`,
+		};
+
+		axios
+			.request(config)
+			.then((res) => {
+				console.log(res);
+				let data = res.data;
+				plans.value = data;
+				loadUsers();
+			})
+			.catch((error) => {
+				console.log(error);
+			})
+			.finally(() => {});
+	}
+
+	onMounted(() => {
+		loadPlans();
+	});
+</script>
+
 <template>
 	<div
 		class="card mb-5 mb-xl-10"
@@ -6,12 +67,20 @@
 	>
 		<!--begin::Card header-->
 		<div
-			class="card-header border-0 cursor-pointer"
+			class="card-header border-0 cursor-pointer d-flex justify-content-between"
 			role="button"
 			data-bs-toggle="collapse"
 		>
 			<div class="card-title m-0">
 				<h3 class="fw-bold m-0">Users</h3>
+			</div>
+			<div>
+				<input
+					@keyup="search($event)"
+					type="text"
+					class="form-control text-right"
+					placeholder="Search users"
+				/>
 			</div>
 		</div>
 		<!--end::Card header-->
@@ -58,29 +127,29 @@
 					>
 						<!--begin::Content-->
 						<div class="mb-3 mb-md-0 fw-semibold">
-							<h4 class="text-gray-900 fw-bold">
-								Your activated tips will show here
-							</h4>
+							<h4 class="text-gray-900 fw-bold">Manage Users</h4>
 
 							<div class="fs-6 text-gray-700 pe-7">
-								Make sure to subscribe and contact support at
-								will to get your instant tips.
+								All subscribed users will show here
 							</div>
 						</div>
 						<!--end::Content-->
-
-						<!--begin::Action-->
-						<a
-							href="#"
-							class="btn btn-primary px-6 align-self-center text-nowrap"
-						>
-							Support
-						</a>
-						<!--end::Action-->
 					</div>
 					<!--end::Wrapper-->
 				</div>
 				<!--end::Notice-->
+
+				<div
+					class="mt-3 row g-3 row-cols-1 row-cols-md-2 row-cols-xxl-3 align-items-stretched"
+				>
+					<div
+						v-for="user in users"
+						class="col user"
+						bis_skin_checked="1"
+					>
+						<User :user="user" :plans="plans" />
+					</div>
+				</div>
 			</div>
 			<!--end::Card body-->
 		</div>
