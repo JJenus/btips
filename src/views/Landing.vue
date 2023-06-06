@@ -1,23 +1,36 @@
 <script setup>
-import Nav from "../components/product/Nav.vue";
-import HowItWorks from "../components/product/HowItWorks.vue";
-import Features from "../components/product/Features.vue";
-import Testimonials from "../components/product/Testimonials.vue";
-import GliderBanner from "../components/product/GliderBanner.vue";
-import Footer from "../components/product/Footer.vue";
-import Projects from "../components/product/Projects.vue";
-import AuthModal from "../components/AuthModal.vue";
-import { provide, ref } from "vue";
+	import Nav from "../components/product/Nav.vue";
+	import HowItWorks from "../components/product/HowItWorks.vue";
+	import Features from "../components/product/Features.vue";
+	import Testimonials from "../components/product/Testimonials.vue";
+	import GliderBanner from "../components/product/GliderBanner.vue";
+	import Footer from "../components/product/Footer.vue";
+	import Projects from "../components/product/Projects.vue";
+	import AuthModal from "../components/AuthModal.vue";
+	import { onBeforeMount, provide, ref } from "vue";
 
-const bodyEl = document.querySelector("#kt_app_body");
+	const bodyEl = document.querySelector("#kt_app_body");
 
-bodyEl.setAttribute("data-bs-target", "#kt_landing_menu");
-bodyEl.setAttribute("data-bs-offset", "200");
-bodyEl.setAttribute("data-kt-app-layout", "light-sidebar");
-bodyEl.setAttribute("data-kt-app-layout", "light-sidebar");
+	bodyEl.setAttribute("data-bs-target", "#kt_landing_menu");
+	bodyEl.setAttribute("data-bs-offset", "200");
+	bodyEl.setAttribute("data-kt-app-layout", "light-sidebar");
+	bodyEl.setAttribute("data-kt-app-layout", "light-sidebar");
 
-const signIn = ref(true);
-provide("authMode", signIn);
+	const env = import.meta.env;
+
+	const signIn = ref(true);
+	provide("authMode", signIn);
+
+	async function mountChat() {
+		const plugin = document.createElement("script");
+		plugin.setAttribute("src", `//code.tidio.co/${env.VITE_TIDIO_KEY}.js`);
+		plugin.async = true;
+		document.head.appendChild(plugin);
+	}
+
+	onBeforeMount(async () => {
+		mountChat();
+	});
 </script>
 
 <template>
@@ -99,7 +112,11 @@ provide("authMode", signIn);
 				<div
 					class="position-absolute top-0 end-0 overflow-hidden w-150px h-450px h-lg-auto w-lg-auto"
 				>
-					<img src="/assets/media/svg/layout/1.svg" class=" " alt="" />
+					<img
+						src="/assets/media/svg/layout/1.svg"
+						class=" "
+						alt=""
+					/>
 				</div>
 				<!--end::Image-->
 			</div>
