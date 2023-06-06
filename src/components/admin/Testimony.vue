@@ -12,6 +12,9 @@
 		testimony: {
 			required: true,
 		},
+		isUser: {
+			required: false,
+		},
 	});
 
 	function delet() {
@@ -40,9 +43,11 @@
 </script>
 
 <template>
-	<div class="col-md-6 col-12 mb-4 mb-lg-0 align-items-stretched">
+	<div class="col-md-6 col-xl-4 col-12 mb-4 mb-lg-0 align-items-stretched">
 		<div class="card h-100 shadow-sm">
-			<div class="pe-7 card-body">
+			<div
+				class="pe-7 card-body flex-column d-flex align-items-center justify-content-end"
+			>
 				<!--begin::Text-->
 				<div class="mb-7">
 					<span class="text-gray-700 d-block fw-semibold fs-4">
@@ -52,7 +57,7 @@
 				<!--end::Text-->
 
 				<!--begin::Item-->
-				<div class="d-flex align-items-center">
+				<div class="d-flex align-items-center justify-content-between">
 					<!--begin::Avatar-->
 					<div
 						class="symbol symbol-50px border-dashed symbol-circle me-4"
@@ -86,9 +91,10 @@
 					<!--end::User-->
 
 					<button
+						v-if="!isUser"
 						type="button"
 						@click="delet()"
-						class="btn btn-light-danger btn-icon"
+						class="btn btn-light-danger btn-icon ms-4"
 					>
 						<i v-if="!loading" class="fa-solid fa-trash"></i>
 						<span

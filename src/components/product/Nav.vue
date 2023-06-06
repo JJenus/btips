@@ -50,7 +50,7 @@ const signIn = inject("authMode");
 					<a href="landing.html">
 						<img
 							alt="Logo"
-							src="assets/logo-default.png"
+							src="/assets/logo-default.png"
 							class="h-md-50px mb-4 h-35px"
 						/>
 					</a>

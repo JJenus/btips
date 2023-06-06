@@ -1,3 +1,36 @@
+<script setup>
+	import axios from "axios";
+	import { onMounted, ref } from "vue";
+	import Testimony from "../admin/Testimony.vue";
+
+	const env = import.meta.env;
+
+	const testimonials = ref([]);
+
+	function loadTestifiers() {
+		let config = {
+			method: "GET",
+			url: `${env.VITE_BE_API}/testimonials`,
+		};
+
+		axios
+			.request(config)
+			.then((res) => {
+				console.log(res);
+				let data = res.data;
+				testimonials.value = data;
+			})
+			.catch((error) => {
+				console.log(error);
+			})
+			.finally(() => {});
+	}
+
+	onMounted(() => {
+		loadTestifiers();
+	});
+</script>
+
 <template>
 	<div class="py-10 pt-md-20 mb-lg-5">
 		<!--begin::Container-->
@@ -14,118 +47,13 @@
 				<!--end::Title-->
 
 				<!--begin::Wrapper-->
-				<div class="d-flex flex-column flex-md-row">
+				<div class="row g-4">
 					<!--begin::Item-->
-					<div class="pe-7">
-						<!--begin::Text-->
-						<div class="mb-7">
-							<span class="text-gray-700 d-block fw-semibold fs-4"
-								>The most well thought out design theme I have
-								ever used. The codes are up to tandard. The css
-								styles are very clean. In fact the cleanest and
-								the most up to standard I have ever seen.</span
-							>
-						</div>
-						<!--end::Text-->
-
-						<!--begin::Item-->
-						<div class="d-flex align-items-center">
-							<!--begin::Avatar-->
-							<div class="symbol symbol-50px symbol-circle me-4">
-								<img
-									src="assets/media/avatars/300-1.jpg"
-									class=""
-									alt=""
-								/>
-							</div>
-							<!--end::Avatar-->
-
-							<!--begin::User-->
-							<div class="flex-grow-1">
-								<a
-									href="pages/user-profile/overview.html"
-									class="text-dark fw-bold text-hover-primary fs-6"
-									>Paul Miles</a
-								>
-
-								<div class="d-flex align-items-center mb-0">
-									<div class="rating-label me-1 checked">
-										<i class="bi bi-star-fill fs-6"></i>
-									</div>
-									<div class="rating-label me-1 checked">
-										<i class="bi bi-star-fill fs-6"></i>
-									</div>
-									<div class="rating-label me-1 checked">
-										<i class="bi bi-star-fill fs-6"></i>
-									</div>
-									<div class="rating-label me-1 checked">
-										<i class="bi bi-star-fill fs-6"></i>
-									</div>
-									<div class="rating-label me-1 checked">
-										<i class="bi bi-star-fill fs-6"></i>
-									</div>
-								</div>
-							</div>
-							<!--end::User-->
-						</div>
-						<!--end::Item-->
-					</div>
-					<!--end::Item-->
-					<!--begin::Item-->
-					<div class="pe-7">
-						<!--begin::Text-->
-						<div class="mb-7">
-							<span class="text-gray-700 d-block fw-semibold fs-4"
-								>The most well thought out design theme I have
-								ever used. The codes are up to tandard. The css
-								styles are very clean. In fact the cleanest and
-								the most up to standard I have ever seen.</span
-							>
-						</div>
-						<!--end::Text-->
-
-						<!--begin::Item-->
-						<div class="d-flex align-items-center">
-							<!--begin::Avatar-->
-							<div class="symbol symbol-50px symbol-circle me-4">
-								<img
-									src="assets/media/avatars/300-1.jpg"
-									class=""
-									alt=""
-								/>
-							</div>
-							<!--end::Avatar-->
-
-							<!--begin::User-->
-							<div class="flex-grow-1">
-								<a
-									href="pages/user-profile/overview.html"
-									class="text-dark fw-bold text-hover-primary fs-6"
-									>Paul Miles</a
-								>
-
-								<div class="d-flex align-items-center mb-0">
-									<div class="rating-label me-1 checked">
-										<i class="bi bi-star-fill fs-6"></i>
-									</div>
-									<div class="rating-label me-1 checked">
-										<i class="bi bi-star-fill fs-6"></i>
-									</div>
-									<div class="rating-label me-1 checked">
-										<i class="bi bi-star-fill fs-6"></i>
-									</div>
-									<div class="rating-label me-1 checked">
-										<i class="bi bi-star-fill fs-6"></i>
-									</div>
-									<div class="rating-label me-1 checked">
-										<i class="bi bi-star-fill fs-6"></i>
-									</div>
-								</div>
-							</div>
-							<!--end::User-->
-						</div>
-						<!--end::Item-->
-					</div>
+					<Testimony
+						v-for="testimony in testimonials"
+						:testimony="testimony"
+						:is-user="true"
+					/>
 					<!--end::Item-->
 				</div>
 				<!--end::Wrapper-->

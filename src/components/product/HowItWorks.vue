@@ -21,7 +21,7 @@
 					<div class="text-center mb-10 mb-md-0">
 						<!--begin::Illustration-->
 						<img
-							src="assets/media/svg/illustrations/easy-2/1.svg"
+							src="/assets/media/svg/illustrations/easy-2/1.svg"
 							class="mb-11 h-125px"
 							alt=""
 						/>
@@ -66,7 +66,7 @@
 					<div class="text-center mb-10 mb-md-0">
 						<!--begin::Illustration-->
 						<img
-							src="assets/media/svg/illustrations/easy-2/2.svg"
+							src="/assets/media/svg/illustrations/easy-2/2.svg"
 							class="mb-11 h-125px"
 							alt=""
 						/>
@@ -111,7 +111,7 @@
 					<div class="text-center mb-10 mb-md-0">
 						<!--begin::Illustration-->
 						<img
-							src="assets/media/svg/illustrations/easy-2/3.svg"
+							src="/assets/media/svg/illustrations/easy-2/3.svg"
 							class="mb-11 h-125px"
 							alt=""
 						/>

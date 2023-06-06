@@ -99,7 +99,7 @@ provide("authMode", signIn);
 				<div
 					class="position-absolute top-0 end-0 overflow-hidden w-150px h-450px h-lg-auto w-lg-auto"
 				>
-					<img src="assets/media/svg/layout/1.svg" class=" " alt="" />
+					<img src="/assets/media/svg/layout/1.svg" class=" " alt="" />
 				</div>
 				<!--end::Image-->
 			</div>
@@ -231,7 +231,7 @@ provide("authMode", signIn);
 
 				<div class="col-md-4 mx-n5">
 					<img
-						src="assets/media/svg/illustrations/easy-2/4.svg"
+						src="/assets/media/svg/illustrations/easy-2/4.svg"
 						class="position-absolute ms-5 top-50 end-0 translate-middle z-index-2 w-200px w-lg-auto d-none d-md-block"
 						alt=""
 					/>
@@ -242,7 +242,7 @@ provide("authMode", signIn);
 			<!--begin::Content-->
 			<div class="position-relative">
 				<img
-					src="assets/media/svg/layout/2.svg"
+					src="/assets/media/svg/layout/2.svg"
 					class="position-absolute top-50 end-0 translate-middle-y overflow-hidden w-250px w-lg-350px h-lg-auto w-xl-auto"
 					alt=""
 				/>

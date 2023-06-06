@@ -25,7 +25,7 @@
 					/>
 
 					<!-- <img
-						src="assets/media/product/2.svg"
+						src="/assets/media/product/2.svg"
 						class="position-absolute pt-20"
 						alt=""
 					/> -->
@@ -34,7 +34,7 @@
 				<!--end::Section-->
 
 				<img
-					src="assets/media/svg/layout/3.svg"
+					src="/assets/media/svg/layout/3.svg"
 					class="position-absolute start-0 translate-middle-y overflow-hidden w-300px h-lg-auto w-lg-550px z-index-1"
 					style="margin-top: 250px"
 					alt=""

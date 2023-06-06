@@ -135,7 +135,7 @@ const AppName = import.meta.env.VITE_APP_NAME;
 								<!--begin::Link-->
 								<a class="mb-6">
 									<img
-										src="assets/media/svg/brand-logos/facebook-4.svg"
+										src="/assets/media/svg/brand-logos/facebook-4.svg"
 										class="h-20px me-2"
 										alt=""
 									/>
@@ -150,7 +150,7 @@ const AppName = import.meta.env.VITE_APP_NAME;
 								<!--begin::Link-->
 								<a class="mb-6">
 									<img
-										src="assets/media/svg/brand-logos/twitter.svg"
+										src="/assets/media/svg/brand-logos/twitter.svg"
 										class="h-20px me-2"
 										alt=""
 									/>
@@ -169,7 +169,7 @@ const AppName = import.meta.env.VITE_APP_NAME;
 								<!--begin::Link-->
 								<a class="mb-6">
 									<img
-										src="assets/media/svg/brand-logos/instagram-2016.svg"
+										src="/assets/media/svg/brand-logos/instagram-2016.svg"
 										class="h-20px me-2"
 										alt=""
 									/>
@@ -205,7 +205,7 @@ const AppName = import.meta.env.VITE_APP_NAME;
 						<a href="landing.html">
 							<img
 								alt="Logo"
-								src="assets/media/logos/logo-default.png"
+								src="/assets/media/logos/logo-default.png"
 								class="h-15px h-md-25px"
 							/>
 						</a>
