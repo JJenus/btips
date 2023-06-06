@@ -3,9 +3,7 @@ import Landing from "../views/Landing.vue";
 import AppView from "../views/Account.vue";
 // // ADMIN
 import Admin from "../views/Admin.vue";
-
-// import Page404 from "../views/Page404.vue";
-// import Login from "../views/admin/Login.vue";
+import Login from "../views/admin/Login.vue";
 
 import { user } from "@/stores/user";
 
@@ -38,29 +36,29 @@ const router = createRouter({
 				if (!user.getUser()) {
 					next({ name: "login" });
 				} else {
-					// const isAdmin = user
-					// 	.getUser()
-					// 	.roles.find((e) => e.name === "ADMIN");
+					const isAdmin = user
+						.getUser()
+						.roles.find((e) => e.name === "ADMIN");
 
-					// if (isAdmin) {
-					// 	next();
-					// } else {
-					// 	next({ name: "login" });
-					// }
-					next();
+					if (isAdmin) {
+						next();
+					} else {
+						next({ name: "login" });
+					}
+					// next();
 				}
 			},
 		},
-		// {
-		// 	path: "/admin/login",
-		// 	name: "login",
-		// 	component: Login,
-		// },
-		// {
-		// 	path: "/:pathMatch(.*)*",
-		// 	name: "NotFound",
-		// 	component: Page404,
-		// },
+		{
+			path: "/admin/login",
+			name: "login",
+			component: Login,
+		},
+		{
+			path: "/:pathMatch(.*)*",
+			name: "NotFound",
+			redirect: "/",
+		},
 	],
 });
 
