@@ -106,6 +106,35 @@
 								</div>
 								<!--end::Col-->
 
+								<!--begin::Col-->
+								<div class="col-md-3">
+									<!--begin::Item-->
+									<a
+										class="d-block card-rounded overlay bg-transparent"
+										data-fslightbox="lightbox-projects"
+									>
+										<!--begin::Image-->
+										<div
+											class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
+											style="
+												background-image: url('https://global-uploads.webflow.com/609d2f4e5dcfc83fef49c786/615d4b400acf088cd373624e_Oddset_Thump.png');
+											"
+										></div>
+										<!--end::Image-->
+
+										<!--begin::Action-->
+										<div
+											class="overlay-layer card-rounded bg-dark bg-opacity-25"
+										>
+											<i
+												class="bi bi-eye-fill fs-3x text-white"
+											></i>
+										</div>
+										<!--end::Action-->
+									</a>
+									<!--end::Item-->
+								</div>
+
 								<div class="col-md-3">
 									<!--begin::Item-->
 									<a
@@ -135,18 +164,17 @@
 								</div>
 								<!--end::Col-->
 
-								<!--begin::Col-->
-								<div class="col-md-3">
+								<div class="col-md-4">
 									<!--begin::Item-->
 									<a
-										class="d-block card-rounded overlay bg-transparent"
+										class="d-block card-rounded overlay"
 										data-fslightbox="lightbox-projects"
 									>
 										<!--begin::Image-->
 										<div
 											class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
 											style="
-												background-image: url('https://play-lh.googleusercontent.com/Kw5Ec424gSMm5gKoXhpoZ28xGe8umSowL5phPX5zuwbKwk9Q6bbgxW5MTR39ObaeWg');
+												background-image: url('https://resources.sbcnews.co.uk/sbcnews/2021/04/Screenshot-2021-04-26-at-11.51.41.png');
 											"
 										></div>
 										<!--end::Image-->
@@ -163,6 +191,36 @@
 									</a>
 									<!--end::Item-->
 								</div>
+								<!--end::Col-->
+
+								<div class="col-md-8 ">
+									<!--begin::Item-->
+									<a
+										class="d-block card-rounded overlay"
+										data-fslightbox="lightbox-projects"
+									>
+										<!--begin::Image-->
+										<div
+											class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
+											style="
+												background-image: url('/assets/media/illustrations/oddset-banner.jpeg');
+											"
+										></div>
+										<!--end::Image-->
+
+										<!--begin::Action-->
+										<div
+											class="overlay-layer card-rounded bg-dark bg-opacity-25"
+										>
+											<i
+												class="bi bi-eye-fill fs-3x text-white"
+											></i>
+										</div>
+										<!--end::Action-->
+									</a>
+									<!--end::Item-->
+								</div>
+								<!--end::Col-->
 							</div>
 							<!--end::Row-->
 						</div>
