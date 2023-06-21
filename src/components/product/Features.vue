@@ -148,9 +148,10 @@
 						<!--end::Text-->
 					</div>
 					<!--end::Item-->
+
 					<!--begin::Item-->
 					<div
-						class="d-flex align-items-top position-relative z-index-2"
+						class="d-flex align-items-top position-relative z-index-2 mb-7 mb-lg-16"
 					>
 						<!--begin::Symbol-->
 						<div class="symbol symbol-50px me-5 me-lg-9 pt-1">
@@ -158,7 +159,8 @@
 								<!--begin::Svg Icon | path: icons/duotune/abstract/abs037.svg-->
 								<span
 									class="svg-icon svg-icon-2x svg-icon-primary"
-									><svg
+								>
+									<svg
 										width="24"
 										height="24"
 										viewBox="0 0 24 24"
@@ -194,6 +196,46 @@
 								Our advanced algorithms and thorough analysis
 								provide reliable insights, empowering you to
 								make informed betting decisions.
+							</span>
+						</div>
+						<!--end::Text-->
+					</div>
+					<!--end::Item-->
+
+					<!--begin::Item-->
+					<div
+						class="d-flex align-items-top position-relative z-index-2"
+					>
+						<!--begin::Symbol-->
+						<div class="symbol symbol-50px me-5 me-lg-9 pt-1">
+							<span class="symbol-label bg-light">
+								<!--begin::Svg Icon | path: icons/duotune/abstract/abs037.svg-->
+								<span
+									class="svg-icon svg-icon-2x svg-icon-primary"
+								>
+									<i class="fa-solid fa-thumbs-up fs-1 text-success"></i>
+								</span>
+								<!--end::Svg Icon-->
+							</span>
+						</div>
+						<!--end::Symbol-->
+
+						<!--begin::Text-->
+						<div class="d-flex flex-column">
+							<span
+								href="pages/blog/post.html"
+								class="text-dark text-hover-primary fs-3 fw-bold mb-3"
+							>
+								100% Fixed Tips
+							</span>
+
+							<span class="text-gray-700 fw-semibold fs-4">
+								When your registration and subscription plan(s)
+								payments are completed you will get unlimited
+								access to the 100% fixed tips, winning is
+								guaranteed. You can request a refund if tips
+								don’t play the fixed outcome. Stop wasting money on
+								mere predictions.
 							</span>
 						</div>
 						<!--end::Text-->
