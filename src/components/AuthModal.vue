@@ -1,137 +1,138 @@
 <script setup>
-import { inject, onMounted, ref } from "vue";
-import axios from "axios";
-import { user } from "../stores/user";
-import { alert } from "../stores/utility";
+	import { inject, onMounted, ref } from "vue";
+	import axios from "axios";
+	import { user } from "../stores/user";
+	import { alert } from "../stores/utility";
 
-const env = import.meta.env;
+	const env = import.meta.env;
 
-const signIn = inject("authMode");
-const loadingReg = ref(false);
+	const signIn = inject("authMode");
+	const loadingReg = ref(false);
+	const passType = ref("password");
 
-const form = ref({
-	name: null,
-	email: null,
-	password: null,
-	cPassword: null,
-});
+	const form = ref({
+		name: null,
+		email: null,
+		password: null,
+		cPassword: null,
+	});
 
-const regError = ref(null);
-const loginError = ref(null);
+	const regError = ref(null);
+	const loginError = ref(null);
 
-function register() {
-	regError.value = null;
-	console.log("What");
+	function register() {
+		regError.value = null;
+		console.log("What");
 
-	if (loadingReg.value) {
-		return;
-	}
-	if (
-		!form.value.email ||
-		!form.value.name ||
-		!form.value.password ||
-		!form.value.cPassword
-	) {
-		regError.value = "Please fill form correctly";
+		if (loadingReg.value) {
+			return;
+		}
+		if (
+			!form.value.email ||
+			!form.value.name ||
+			!form.value.password ||
+			!form.value.cPassword
+		) {
+			regError.value = "Please fill form correctly";
 
-		alert.error(regError.value);
-		return;
-	}
+			alert.error(regError.value);
+			return;
+		}
 
-	console.log(regError.value);
+		console.log(regError.value);
 
-	if (form.value.password !== form.value.cPassword) {
-		regError.value = "Passwords don't match";
-		alert.error(regError.value);
-		return;
-	}
+		if (form.value.password !== form.value.cPassword) {
+			regError.value = "Passwords don't match";
+			alert.error(regError.value);
+			return;
+		}
 
-	loadingReg.value = true;
+		loadingReg.value = true;
 
-	const { name, email, password } = form.value;
-	console.log(email);
+		const { name, email, password } = form.value;
+		console.log(email);
 
-	let config = {
-		method: "Post",
-		url: `${env.VITE_BE_API}/auth/register`,
-		data: {
-			name,
-			email,
-			password,
-		},
-	};
+		let config = {
+			method: "Post",
+			url: `${env.VITE_BE_API}/auth/register`,
+			data: {
+				name,
+				email,
+				password,
+			},
+		};
 
-	axios
-		.request(config)
-		.then((response) => {
-			console.log(response.data);
-			if (response.data.error) {
-				regError.value = response.data.error;
-				alert.error(regError.value);
-			} else {
-				user.login(response.data);
-				alert.success("Signing you in. Please wait.");
-				window.location.href = "/app#subscription_plans";
-			}
-		})
-		.catch(function (error) {
-			console.log(error);
-			alert.error("Failed to login");
-		})
-		.finally(() => {
-			loadingReg.value = false;
-		});
-}
-
-function sumitLogin() {
-	if (loadingReg.value) {
-		return;
-	}
-	if (!form.value.email || !form.value.password) {
-		loginError.value = "Please fill form correctly";
-		alert.error(loginError.value);
-		return;
+		axios
+			.request(config)
+			.then((response) => {
+				console.log(response.data);
+				if (response.data.error) {
+					regError.value = response.data.error;
+					alert.error(regError.value);
+				} else {
+					user.login(response.data);
+					alert.success("Signing you in. Please wait.");
+					window.location.href = "/app#subscription_plans";
+				}
+			})
+			.catch(function (error) {
+				console.log(error);
+				alert.error("Failed to login");
+			})
+			.finally(() => {
+				loadingReg.value = false;
+			});
 	}
 
-	console.log(loginError.value);
+	function sumitLogin() {
+		if (loadingReg.value) {
+			return;
+		}
+		if (!form.value.email || !form.value.password) {
+			loginError.value = "Please fill form correctly";
+			alert.error(loginError.value);
+			return;
+		}
 
-	loadingReg.value = true;
+		console.log(loginError.value);
 
-	const { email, password } = form.value;
-	console.log(email);
+		loadingReg.value = true;
 
-	let config = {
-		method: "Post",
-		url: `${env.VITE_BE_API}/auth/login`,
-		data: {
-			email,
-			password,
-		},
-	};
+		const { email, password } = form.value;
+		console.log(email);
 
-	axios
-		.request(config)
-		.then((response) => {
-			console.log(response.data);
-			if (response.data.error) {
-				loginError.value = response.data.error;
-				alert.error(loginError.value);
-			} else {
-				user.login(response.data);
-				alert.success("Authorized");
-				window.location.href = "/app#subscription_plans	";
-			}
-		})
-		.catch(function (error) {
-			alert.error("Unable to login. Check your credentials.");
-			console.log(error);
-		})
-		.finally(() => {
-			loadingReg.value = false;
-		});
-}
+		let config = {
+			method: "Post",
+			url: `${env.VITE_BE_API}/auth/login`,
+			data: {
+				email,
+				password,
+			},
+		};
 
-onMounted(() => {});
+		axios
+			.request(config)
+			.then((response) => {
+				console.log(response.data);
+				if (response.data.error) {
+					loginError.value = response.data.error;
+					alert.error(loginError.value);
+				} else {
+					user.login(response.data);
+					alert.success("Authorized");
+					window.location.href = "/app#subscription_plans	";
+				}
+			})
+			.catch(function (error) {
+				alert.error("Unable to login. Check your credentials.");
+				console.log(error);
+			})
+			.finally(() => {
+				loadingReg.value = false;
+			});
+	}
+
+	onMounted(() => {});
 </script>
 
 <template>
@@ -149,7 +150,9 @@ onMounted(() => {});
 		>
 			<div class="modal-content rounded">
 				<div class="modal-body p-0">
-					<div class="card position-relative h-100 border-gray-300 p-3 px-md-4">
+					<div
+						class="card position-relative h-100 border-gray-300 p-3 px-md-4"
+					>
 						<div class="card-body">
 							<div class="position-absolute top-0 end-0 m-4">
 								<button
@@ -237,13 +240,35 @@ onMounted(() => {});
 									<!--end::Wrapper-->
 
 									<!--begin::Input-->
-									<input
-										class="form-control form-control-lg form-control-solid"
-										type="password"
-										name="password"
-										autocomplete="off"
-										v-model="form.password"
-									/>
+									<div class="input-group">
+										<input
+											class="form-control form-control-lg form-control-solid"
+											:type="passType"
+											name="password"
+											autocomplete="off"
+											v-model="form.password"
+										/>
+										<span class="input-group-text border-0">
+											<a
+												role="button"
+												@click="
+													passType == 'text'
+														? (passType =
+																'password')
+														: (passType = 'text')
+												"
+											>
+												<i
+													:class="
+														passType == 'text'
+															? 'la-eye-slash'
+															: 'la-eye'
+													"
+													class="las fs-1"
+												></i>
+											</a>
+										</span>
+									</div>
 									<!--end::Input-->
 								</div>
 								<!--end::Input group-->
@@ -382,15 +407,37 @@ onMounted(() => {});
 										<!--end::Label-->
 
 										<!--begin::Input wrapper-->
-										<div class="position-relative mb-3">
+										<div class="input-group position-relative mb-3">
 											<input
 												class="form-control form-control-lg form-control-solid"
-												type="password"
-												placeholder=""
+												:type="passType"
 												name="password"
-												autocomplete="false"
+												autocomplete="off"
 												v-model="form.password"
 											/>
+											<span
+												class="input-group-text border-0"
+											>
+												<a
+													role="button"
+													@click="
+														passType == 'text'
+															? (passType =
+																	'password')
+															: (passType =
+																	'text')
+													"
+												>
+													<i
+														:class="
+															passType == 'text'
+																? 'la-eye-slash'
+																: 'la-eye'
+														"
+														class="las fs-1"
+													></i>
+												</a>
+											</span>
 										</div>
 										<!--end::Input wrapper-->
 									</div>
@@ -413,7 +460,7 @@ onMounted(() => {});
 									>
 									<input
 										class="form-control form-control-lg form-control-solid"
-										type="password"
+										:type="passType"
 										placeholder=""
 										name="confirm-password"
 										autocomplete="off"
