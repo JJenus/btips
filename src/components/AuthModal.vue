@@ -9,6 +9,8 @@
 	const signIn = inject("authMode");
 	const loadingReg = ref(false);
 	const passType = ref("password");
+	const resetSubmitted = ref(false);
+	const loadingReset = ref(false);
 
 	const form = ref({
 		name: null,
@@ -19,6 +21,32 @@
 
 	const regError = ref(null);
 	const loginError = ref(null);
+
+	function submitReset() {
+		let config = {
+			method: "Post",
+			url: `${env.VITE_BE_API}/auth/request-password-reset`,
+			data: {
+				email: form.value.email,
+			},
+		};
+
+		loadingReset.value = true;
+
+		axios
+			.request(config)
+			.then((response) => {
+				console.log(response.data);
+			})
+			.catch(function (error) {
+				console.log(error);
+			})
+			.finally(() => {
+				alert.success("Check your email for further instructions");
+				resetSubmitted.value = true;
+				loadingReset.value = false;
+			});
+	}
 
 	function register() {
 		regError.value = null;
@@ -167,7 +195,7 @@
 							<!--begin::Form-->
 							<form
 								@submit.prevent="sumitLogin()"
-								v-if="signIn"
+								v-if="signIn == 'login'"
 								class="form w-100 h-100"
 								novalidate="novalidate"
 								id="kt_sign_in_form"
@@ -185,7 +213,7 @@
 										New Here?
 
 										<a
-											@click="signIn = false"
+											@click="signIn = 'create'"
 											role="button"
 											class="link-primary fw-bold"
 										>
@@ -230,8 +258,9 @@
 
 										<!--begin::Link-->
 										<a
-											href=""
-											class="d-none link-primary fs-6 fw-bold"
+											@click="signIn = 'reset'"
+											role="button"
+											class="link-primary fs-6 fw-bold"
 										>
 											Forgot Password ?
 										</a>
@@ -308,7 +337,7 @@
 
 							<!--begin::Form-->
 							<form
-								v-else
+								v-else-if="signIn == 'create'"
 								class="form w-100"
 								novalidate="novalidate"
 								id="kt_sign_up_form"
@@ -327,7 +356,7 @@
 										Already have an account?
 
 										<a
-											@click="signIn = true"
+											@click="signIn = 'login'"
 											role="button"
 											class="link-primary fw-bold"
 										>
@@ -407,7 +436,9 @@
 										<!--end::Label-->
 
 										<!--begin::Input wrapper-->
-										<div class="input-group position-relative mb-3">
+										<div
+											class="input-group position-relative mb-3"
+										>
 											<input
 												class="form-control form-control-lg form-control-solid"
 												:type="passType"
@@ -524,6 +555,100 @@
 								<!--end::Actions-->
 							</form>
 							<!--end::Form-->
+
+							<form
+								v-if="signIn == 'reset'"
+								class="form w-100 fv-plugins-bootstrap5 fv-plugins-framework"
+								novalidate="novalidate"
+								id="kt_password_reset_form"
+							>
+								<!--begin::Heading-->
+								<div class="text-center mb-10">
+									<!--begin::Title-->
+									<h1 class="text-dark mb-3">
+										Forgot Password ?
+									</h1>
+									<!--end::Title-->
+
+									<!--begin::Link-->
+									<div class="text-gray-400 fw-semibold fs-4">
+										<span v-if="!resetSubmitted">
+											Enter your email to reset your
+											password.
+										</span>
+										<span>
+											Check your email to complete the
+											process
+										</span>
+									</div>
+									<!--end::Link-->
+								</div>
+								<!--begin::Heading-->
+
+								<!--begin::Input group-->
+								<div
+									v-if="!resetSubmitted"
+									class="fv-row mb-10 fv-plugins-icon-container"
+								>
+									<label
+										class="form-label fw-bold text-gray-900 fs-6"
+										>Email</label
+									>
+									<input
+										class="form-control form-control-solid"
+										type="email"
+										placeholder=""
+										name="email"
+										autocomplete="off"
+										v-model="form.email"
+									/>
+									<div
+										class="fv-plugins-message-container invalid-feedback"
+									></div>
+								</div>
+								<!--end::Input group-->
+
+								<!--begin::Actions-->
+								<div
+									class="d-flex flex-wrap justify-content-center pb-lg-0"
+								>
+									<button
+										v-if="resetSubmitted"
+										@click="resetSubmitted = false"
+										class="btn btn-lg btn-warning fw-bold me-4"
+									>
+										Change email
+									</button>
+									<button
+										v-else
+										@click="submitReset()"
+										type="button"
+										id="kt_password_reset_submit"
+										class="btn btn-lg btn-primary fw-bold me-4"
+									>
+										<span v-if="!loadingReset">
+											Submit
+										</span>
+										<span v-else>
+											Please wait...
+											<span
+												class="spinner-border spinner-border-sm align-middle ms-2"
+												role="status"
+												aria-hidden="true"
+											></span>
+										</span>
+									</button>
+
+									<a
+										@click="signIn = 'login'"
+										role="button"
+										class="btn btn-lg btn-light-primary fw-bold"
+										>Back</a
+									>
+								</div>
+								<!--end::Actions-->
+								<div></div>
+							</form>
 						</div>
 					</div>
 				</div>

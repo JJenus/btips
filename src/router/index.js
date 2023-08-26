@@ -6,6 +6,7 @@ import Admin from "../views/Admin.vue";
 import Login from "../views/admin/Login.vue";
 
 import { user } from "@/stores/user";
+import PasswordResetVue from "../views/PasswordReset.vue";
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -53,6 +54,11 @@ const router = createRouter({
 			path: "/admin/login",
 			name: "login",
 			component: Login,
+		},
+		{
+			path: "/reset-password",
+			name: "resetpassword",
+			component: PasswordResetVue,
 		},
 		{
 			path: "/:pathMatch(.*)*",

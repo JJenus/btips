@@ -148,7 +148,7 @@ const signIn = inject("authMode");
 					<button
 						data-bs-toggle="modal"
 						data-bs-target="#authModal"
-						@click="signIn = true"
+						@click="signIn = 'login'"
 						class="btn btn-danger"
 					>
 						Sign In
