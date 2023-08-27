@@ -81,7 +81,7 @@
 									<button
 										data-bs-toggle="modal"
 										data-bs-target="#authModal"
-										@click="signIn = true"
+										@click="signIn = 'login'"
 										class="btn btn-white btn-lg btn-color-gray-700 shadow me-2 flex-shrink-0 my-1 fw-bold btn-active-light-primary"
 									>
 										Sign In
@@ -91,7 +91,7 @@
 									<button
 										data-bs-toggle="modal"
 										data-bs-target="#authModal"
-										@click="signIn = false"
+										@click="signIn = 'create'"
 										class="btn btn-primary btn-lg flex-shrink-0 fw-bold me-2 me-md-4 my-1"
 									>
 										Sign Up
