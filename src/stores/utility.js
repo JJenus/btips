@@ -9,7 +9,7 @@ const options = {
 
 export const alert = {
 	success(title = false, message = "") {
-		if (title) new AWN().success(title);
+		if (title) new AWN(options).success(title);
 		else new AWN(options).success();
 	},
 	error(title, message = "") {

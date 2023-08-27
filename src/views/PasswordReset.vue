@@ -2,6 +2,10 @@
 	import { onMounted } from "vue";
 	import { ref } from "vue";
 	import { useRoute, useRouter } from "vue-router";
+	import axios from "axios";
+	import { alert } from "../stores/utility";
+
+	const env = import.meta.env;
 
 	const router = useRouter();
 	const route = useRoute();
@@ -29,13 +33,14 @@
 			.request(config)
 			.then((response) => {
 				console.log(response.data);
-				alert.success();
+				alert.success("Reset success");
 				setTimeout(() => {
 					location.href = "/";
-				}, 3000);
+				}, 5000);
 			})
 			.catch(function (error) {
 				console.log(error);
+				alert.error(error.data);
 			})
 			.finally(() => {
 				loadingReset.value = false;
@@ -44,17 +49,17 @@
 
 	onMounted(async () => {
 		await router.isReady();
-		console.log(route.query["token"])
-		if (route.query["token"]) {
-			form.value.token = route.query["token"];
+		const token = route.query["id"]
+		console.log(token);
+		if (token) {
+			form.value.token = token;
 		}
 		setTimeout(() => {
 			if (!form.value.token) {
 				timeUp.value = true;
 			}
-		}, 5000);
+		}, 4000);
 	});
-
 </script>
 <template>
 	<div class="auth-bg app-blank">
