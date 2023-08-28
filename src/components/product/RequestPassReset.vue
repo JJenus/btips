@@ -2,7 +2,7 @@
 	import { ref } from "vue";
 	import { inject } from "vue";
 	import axios from "axios";
-    import { alert } from "../../stores/utility";
+	import { alert } from "../../stores/utility";
 
 	const env = import.meta.env;
 	const signIn = inject("authMode");
@@ -21,6 +21,7 @@
 			method: "Post",
 			url: `${env.VITE_BE_API}/auth/reset-password`,
 			data: form.value,
+			timeout: 20000,
 		};
 
 		loadingReset.value = true;
@@ -29,13 +30,18 @@
 			.request(config)
 			.then((response) => {
 				console.log(response.data);
-			})
-			.catch(function (error) {
-				// console.log(error);
-			})
-			.finally(() => {
 				alert.success("Check your email for further instructions");
 				resetSubmitted.value = true;
+			})
+			.catch(function (error) {
+				if (axios.isCancel(error)) {
+					window.debug.log("Request timed out");
+					alert.error("Please check your internet connection");
+				} else {
+					alert.success("Email does not exist")
+				}
+			})
+			.finally(() => {
 				loadingReset.value = false;
 			});
 	}

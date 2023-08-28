@@ -25,6 +25,7 @@
 			method: "Post",
 			url: `${env.VITE_BE_API}/auth/change-password`,
 			data: form.value,
+			timeout: 20000,
 		};
 
 		loadingReset.value = true;
@@ -39,8 +40,13 @@
 				}, 5000);
 			})
 			.catch(function (error) {
-				window.debug.log(error);
-				alert.error(error.data);
+				if (axios.isCancel(error)) {
+					window.debug.log("Request timed out");
+					alert.error("Please check your internet connection");
+				} else {
+					window.debug.log(error);
+					alert.error(error.data);
+				}
 			})
 			.finally(() => {
 				loadingReset.value = false;
@@ -49,7 +55,7 @@
 
 	onMounted(async () => {
 		await router.isReady();
-		const token = route.query["id"]
+		const token = route.query["id"];
 		console.log(token);
 		if (token) {
 			form.value.token = token;

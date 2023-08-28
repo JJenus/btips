@@ -21,7 +21,6 @@
 	const regError = ref(null);
 	const loginError = ref(null);
 
-	
 	function register() {
 		regError.value = null;
 
@@ -60,6 +59,7 @@
 				email,
 				password,
 			},
+			timeout: 20000,
 		};
 
 		axios
@@ -76,8 +76,13 @@
 				}
 			})
 			.catch(function (error) {
-				window.debug.log(error);
-				alert.error("Failed to login");
+				if (axios.isCancel(error)) {
+					window.debug.log("Request timed out");
+					alert.error("Please check your internet connection");
+				} else {
+					window.debug.log(error);
+					alert.error("Failed to login");
+				}
 			})
 			.finally(() => {
 				loadingReg.value = false;
@@ -108,6 +113,7 @@
 				email,
 				password,
 			},
+			timeout: 20000,
 		};
 
 		axios
@@ -124,8 +130,15 @@
 				}
 			})
 			.catch(function (error) {
-				alert.error("Unable to login. Check your credentials.");
-				window.debug.log(error);
+				if (axios.isCancel(error)) {
+					// Request was canceled due to timeout
+					window.debug.log("Request timed out");
+					// Handle the timeout error here
+					alert.error("Please check your internet connection");
+				} else {
+					alert.error("Unable to login. Check your credentials.");
+					window.debug.log(error);
+				}
 			})
 			.finally(() => {
 				loadingReg.value = false;
