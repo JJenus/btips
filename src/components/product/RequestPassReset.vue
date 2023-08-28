@@ -38,8 +38,8 @@
 					window.debug.log("Request timed out");
 					alert.error("Please check your internet connection");
 				} else {
-					window.debug.log(error);
-					alert.success("Email does not exist")
+					window.debug.log(error.response.data);
+					alert.error("")
 				}
 			})
 			.finally(() => {
