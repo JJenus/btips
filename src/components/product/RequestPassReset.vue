@@ -19,7 +19,7 @@
 		}
 		let config = {
 			method: "Post",
-			url: `${env.VITE_BE_API}/auth/request-password-reset`,
+			url: `${env.VITE_BE_API}/auth/reset-password`,
 			data: form.value,
 		};
 
