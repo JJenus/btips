@@ -24,7 +24,6 @@
 	
 	function register() {
 		regError.value = null;
-		console.log("What");
 
 		if (loadingReg.value) {
 			return;
@@ -41,7 +40,7 @@
 			return;
 		}
 
-		console.log(regError.value);
+		window.debug.log(regError.value);
 
 		if (form.value.password !== form.value.cPassword) {
 			regError.value = "Passwords don't match";
@@ -52,7 +51,6 @@
 		loadingReg.value = true;
 
 		const { name, email, password } = form.value;
-		console.log(email);
 
 		let config = {
 			method: "Post",
@@ -67,7 +65,7 @@
 		axios
 			.request(config)
 			.then((response) => {
-				console.log(response.data);
+				window.debug.log(response.data);
 				if (response.data.error) {
 					regError.value = response.data.error;
 					alert.error(regError.value);
@@ -78,7 +76,7 @@
 				}
 			})
 			.catch(function (error) {
-				console.log(error);
+				window.debug.log(error);
 				alert.error("Failed to login");
 			})
 			.finally(() => {
@@ -96,12 +94,12 @@
 			return;
 		}
 
-		console.log(loginError.value);
+		window.debug.log(loginError.value);
 
 		loadingReg.value = true;
 
 		const { email, password } = form.value;
-		console.log(email);
+		window.debug.log(email);
 
 		let config = {
 			method: "Post",
@@ -115,7 +113,7 @@
 		axios
 			.request(config)
 			.then((response) => {
-				console.log(response.data);
+				window.debug.log(response.data);
 				if (response.data.error) {
 					loginError.value = response.data.error;
 					alert.error(loginError.value);
@@ -127,7 +125,7 @@
 			})
 			.catch(function (error) {
 				alert.error("Unable to login. Check your credentials.");
-				console.log(error);
+				window.debug.log(error);
 			})
 			.finally(() => {
 				loadingReg.value = false;
