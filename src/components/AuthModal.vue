@@ -76,7 +76,7 @@
 				}
 			})
 			.catch(function (error) {
-				if (axios.isCancel(error)) {
+				if (error.message.includes("timeout")) {
 					window.debug.log("Request timed out");
 					alert.error("Please check your internet connection");
 				} else {
@@ -130,7 +130,7 @@
 				}
 			})
 			.catch(function (error) {
-				if (axios.isCancel(error)) {
+				if (error.message.includes("timeout")) {
 					// Request was canceled due to timeout
 					window.debug.log("Request timed out");
 					// Handle the timeout error here

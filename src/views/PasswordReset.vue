@@ -40,7 +40,7 @@
 				}, 5000);
 			})
 			.catch(function (error) {
-				if (axios.isCancel(error)) {
+				if (error.message.includes("timeout")) {
 					window.debug.log("Request timed out");
 					alert.error("Please check your internet connection");
 				} else {

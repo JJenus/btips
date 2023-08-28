@@ -34,10 +34,11 @@
 				resetSubmitted.value = true;
 			})
 			.catch(function (error) {
-				if (axios.isCancel(error)) {
+				if (error.message.includes("timeout")) {
 					window.debug.log("Request timed out");
 					alert.error("Please check your internet connection");
 				} else {
+					window.debug.log(error);
 					alert.success("Email does not exist")
 				}
 			})
