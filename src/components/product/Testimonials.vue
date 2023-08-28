@@ -16,12 +16,12 @@
 		axios
 			.request(config)
 			.then((res) => {
-				console.log(res);
+				// window.debug.log(res);
 				let data = res.data;
 				testimonials.value = data;
 			})
 			.catch((error) => {
-				console.log(error);
+				window.debug.log(error);
 			})
 			.finally(() => {});
 	}

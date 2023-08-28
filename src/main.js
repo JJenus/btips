@@ -19,7 +19,7 @@ if (
 		error: window.console.error,
 	};
 } else {
-	console.log("Production environment");
+	// console.log("Production environment");
 	window.debug = {
 		log: function () {},
 		warn: function () {},

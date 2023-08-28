@@ -32,14 +32,14 @@
 		axios
 			.request(config)
 			.then((response) => {
-				console.log(response.data);
+				window.debug.log(response.data);
 				alert.success("Reset success");
 				setTimeout(() => {
 					location.href = "/";
 				}, 5000);
 			})
 			.catch(function (error) {
-				console.log(error);
+				window.debug.log(error);
 				alert.error(error.data);
 			})
 			.finally(() => {
