@@ -10,12 +10,9 @@ const i18n = createI18n({
 	locale: "pt",
 	fallbackLocale: "en",
 
-	// translations
-
 	messages: {
 		en,
 		pt,
-		// fr,
 	},
 });
 

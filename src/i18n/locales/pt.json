@@ -1,11 +1,12 @@
 {
 	"locale": {
 		"locale": "Português",
-        "pt": "Português", 
+		"pt": "Português",
 		"en": "Inglês",
 		"es": "Espanhol",
 		"fr": "Francês",
-		"flag": "https://static.vecteezy.com/system/resources/thumbnails/010/870/761/small/american-flag-of-united-states-of-america-png.png"
+		"flag": "/assets/media/flags/portugal.svg",
+		"lang": "Idioma"
 	},
 
 	"auth": {

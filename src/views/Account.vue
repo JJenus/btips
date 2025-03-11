@@ -1,6 +1,6 @@
 <script setup>
 	import { user } from "../stores/user";
-	import { onBeforeMount, provide, ref } from "vue";
+	import { onBeforeMount, provide, ref, watch } from "vue";
 	import axios from "axios";
 	import { useI18n } from "vue-i18n"; // Import useI18n
 
@@ -12,6 +12,7 @@
 	import ProfileDetails from "./app/ProfileDetails.vue";
 	import Subscriptions from "./app/Subscriptions.vue";
 	import DeactivateAccount from "./app/DeactivateAccount.vue";
+	import { util } from "../stores/utility";
 
 	const { t } = useI18n(); // Destructure t from useI18n
 
@@ -21,28 +22,36 @@
 	const User = ref(user.getUser());
 	provide("user", User);
 
-	const navs = ref([
-		{
-			name: t("app.navs.overview"), // Use t() for translations
-			target: "#overview",
-		},
-		{
-			name: t("app.navs.tips"), // Use t() for translations
-			target: "#tips",
-		},
-		{
-			name: t("app.navs.subscriptionPlans"), // Use t() for translations
-			target: "#subscription_plans",
-		},
-		{
-			name: t("app.navs.profileDetails"), // Use t() for translations
-			target: "#profile_details",
-		},
-		{
-			name: t("app.navs.deactivateAccount"), // Use t() for translations
-			target: "#deactivate_account",
-		},
-	]);
+	const navs = ref([]);
+
+	const initNavs = () => {
+		navs.value = [
+			{
+				name: t("app.navs.overview"), // Use t() for translations
+				target: "#overview",
+			},
+			{
+				name: t("app.navs.tips"), // Use t() for translations
+				target: "#tips",
+			},
+			{
+				name: t("app.navs.subscriptionPlans"), // Use t() for translations
+				target: "#subscription_plans",
+			},
+			{
+				name: t("app.navs.profileDetails"), // Use t() for translations
+				target: "#profile_details",
+			},
+			{
+				name: t("app.navs.deactivateAccount"), // Use t() for translations
+				target: "#deactivate_account",
+			},
+		];
+	};
+
+	watch(util.lang, (newVal) => {
+		initNavs();
+	});
 
 	const bodyEl = document.querySelector("#kt_app_body");
 	bodyEl.setAttribute("data-kt-app-layout", "overlay");
@@ -73,8 +82,10 @@
 		document.head.appendChild(plugin);
 	}
 
+	initNavs();
+
 	onBeforeMount(async () => {
-		mountChat();
+		// mountChat();
 		await loadUser();
 	});
 </script>

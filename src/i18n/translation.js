@@ -3,16 +3,12 @@ import i18n from "@/i18n"; // <--- 1
 const aLocales = [
 	{
 		locale: "en",
-		flag: "https://static.vecteezy.com/system/resources/thumbnails/010/870/761/small/american-flag-of-united-states-of-america-png.png",
+		flag: "/assets/media/flags/united-states.svg",
 	},
 	{
 		locale: "pt",
-		flag: "https://seeklogo.com/images/S/Spain-logo-72350D8587-seeklogo.com.png",
+		flag: "/assets/media/flags/portugal.svg",
 	},
-	// {
-	// 	locale: "fr",
-	// 	flag: "https://cdn.britannica.com/82/682-004-F0B47FCB/Flag-France.jpg",
-	// },
 ];
 
 const Trans = {

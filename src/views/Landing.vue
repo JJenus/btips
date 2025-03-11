@@ -29,7 +29,7 @@
 	}
 
 	onBeforeMount(async () => {
-		mountChat();
+		// mountChat();
 	});
 </script>
 

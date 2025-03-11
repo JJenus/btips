@@ -1,7 +1,7 @@
 import { inject, ref } from "vue";
 import currency from "currency.js";
 import AWN from "awesome-notifications";
-import "awesome-notifications/dist/style.css"
+import "awesome-notifications/dist/style.css";
 
 const options = {
 	position: "top-right",
@@ -18,10 +18,10 @@ export const alert = {
 	info(title, message = "") {
 		new AWN(options).info(title);
 	},
-	
 };
 
 export const util = {
+	lang: ref("pt"),
 	avatar: "/assets/img/avatar/default-avatar.png",
 	settings: () => {
 		return {

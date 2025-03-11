@@ -5,7 +5,8 @@
 		"es": "Spanish",
 		"fr": "French",
 		"pt": "Portuguese",
-		"flag": "https://static.vecteezy.com/system/resources/thumbnails/010/870/761/small/american-flag-of-united-states-of-america-png.png"
+		"flag": "/assets/media/flags/united-states.svg",
+		"lang": "Language"
 	},
 
 	"auth": {
@@ -92,7 +93,7 @@
 		"seamlessCommunication": {
 			"title": "Do you need a Seamless Communication?",
 			"description": "Email us to",
-			"email": "support@thebettortips.com"
+			"email": ""
 		},
 		"startWinning": {
 			"title": "How About You Start Winning?",

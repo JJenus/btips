@@ -1,5 +1,7 @@
 <script setup>
-const AppName = import.meta.env.VITE_APP_NAME;
+	import LangSelector from "../LangSelector.vue";
+
+	const AppName = import.meta.env.VITE_APP_NAME;
 </script>
 
 <template>
@@ -22,12 +24,16 @@ const AppName = import.meta.env.VITE_APP_NAME;
 
 							<!--begin::Text-->
 							<span class="fw-normal fs-4 text-gray-600">
-								{{ $t("footer.seamlessCommunication.description") }}
+								{{
+									$t(
+										"footer.seamlessCommunication.description"
+									)
+								}}
 								<a
 									href="mailto:support@thebettortips.com"
 									class="fw-semibold fs-4 text-gray-800 text-hover-primary"
 								>
-									{{ $t("footer.seamlessCommunication.email") }}
+									{{ "support@thebettortips.com" }}
 								</a>
 							</span>
 							<!--end::Text-->
@@ -45,7 +51,9 @@ const AppName = import.meta.env.VITE_APP_NAME;
 							<!--begin::Text-->
 							<span class="fw-normal fs-4 text-gray-700">
 								{{ $t("footer.startWinning.description") }}
-								<a class="fw-semibold fs-4 text-gray-800 text-hover-primary">
+								<a
+									class="fw-semibold fs-4 text-gray-800 text-hover-primary"
+								>
 									{{ $t("footer.startWinning.cta") }}
 								</a>
 							</span>
@@ -60,7 +68,9 @@ const AppName = import.meta.env.VITE_APP_NAME;
 						<!--begin::Navs-->
 						<div class="d-flex justify-content-center">
 							<!--begin::Links-->
-							<div class="d-flex fw-semibold flex-column me-20 d-none">
+							<div
+								class="d-flex fw-semibold flex-column me-20 d-none"
+							>
 								<!--begin::Subtitle-->
 								<h4 class="fw-bold text-gray-900 mb-6">
 									{{ $t("footer.moreForGood.title") }}
@@ -68,26 +78,49 @@ const AppName = import.meta.env.VITE_APP_NAME;
 								<!--end::Subtitle-->
 
 								<!--begin::Links-->
-								<a href="#" class="text-gray-700 text-hover-primary fs-5 mb-6">
+								<a
+									href="#"
+									class="text-gray-700 text-hover-primary fs-5 mb-6"
+								>
 									{{ $t("footer.moreForGood.links.faq") }}
 								</a>
-								<a href="#" class="text-gray-700 text-hover-primary fs-5 mb-6">
-									{{ $t("footer.moreForGood.links.documentation") }}
+								<a
+									href="#"
+									class="text-gray-700 text-hover-primary fs-5 mb-6"
+								>
+									{{
+										$t(
+											"footer.moreForGood.links.documentation"
+										)
+									}}
 								</a>
-								<a href="#" class="text-gray-700 text-hover-primary fs-5 mb-6">
-									{{ $t("footer.moreForGood.links.videoTuts") }}
+								<a
+									href="#"
+									class="text-gray-700 text-hover-primary fs-5 mb-6"
+								>
+									{{
+										$t("footer.moreForGood.links.videoTuts")
+									}}
 								</a>
 							</div>
 							<!--end::Links-->
 
 							<!--begin::Links-->
-							<div class="d-flex fw-semibold flex-column ms-lg-20">
+							<div
+								class="d-flex fw-semibold flex-column ms-lg-20"
+							>
 								<h4 class="fw-bold text-gray-900 mb-6">
 									{{ $t("footer.stayConnected.title") }}
 								</h4>
-								<a class="mb-6">{{ $t("footer.stayConnected.socials.facebook") }}</a>
-								<a class="mb-6">{{ $t("footer.stayConnected.socials.twitter") }}</a>
-								<a class="mb-6">{{ $t("footer.stayConnected.socials.instagram") }}</a>
+								<a class="mb-6">{{
+									$t("footer.stayConnected.socials.facebook")
+								}}</a>
+								<a class="mb-6">{{
+									$t("footer.stayConnected.socials.twitter")
+								}}</a>
+								<a class="mb-6">{{
+									$t("footer.stayConnected.socials.instagram")
+								}}</a>
 							</div>
 							<!--end::Links-->
 						</div>
@@ -104,6 +137,12 @@ const AppName = import.meta.env.VITE_APP_NAME;
 					<span class="mx-5 fs-6 fw-semibold text-gray-700 pt-1">
 						Copyright &copy; {{ AppName }} 2023
 					</span>
+
+					<div
+						class="menu fw-semibold"
+					>
+						<LangSelector :showLag="true" class="me-3" />
+					</div>
 				</div>
 			</div>
 		</div>
