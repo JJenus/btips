@@ -2,6 +2,7 @@
 	import { user } from "../stores/user";
 	import { onBeforeMount, provide, ref } from "vue";
 	import axios from "axios";
+	import { useI18n } from "vue-i18n"; // Import useI18n
 
 	import Header from "../components/app/Header.vue";
 	import Footer from "../components/app/Footer.vue";
@@ -12,6 +13,8 @@
 	import Subscriptions from "./app/Subscriptions.vue";
 	import DeactivateAccount from "./app/DeactivateAccount.vue";
 
+	const { t } = useI18n(); // Destructure t from useI18n
+
 	const env = import.meta.env;
 
 	const AppName = env.VITE_APP_NAME;
@@ -20,23 +23,23 @@
 
 	const navs = ref([
 		{
-			name: "Overview",
+			name: t("app.navs.overview"), // Use t() for translations
 			target: "#overview",
 		},
 		{
-			name: "Tips",
+			name: t("app.navs.tips"), // Use t() for translations
 			target: "#tips",
 		},
 		{
-			name: "Subscription Plans",
+			name: t("app.navs.subscriptionPlans"), // Use t() for translations
 			target: "#subscription_plans",
 		},
 		{
-			name: "Profile Details",
+			name: t("app.navs.profileDetails"), // Use t() for translations
 			target: "#profile_details",
 		},
 		{
-			name: "Deactivate Account",
+			name: t("app.navs.deactivateAccount"), // Use t() for translations
 			target: "#deactivate_account",
 		},
 	]);
@@ -48,7 +51,6 @@
 	bodyEl.setAttribute("data-kt-app-sidebar-push-footer", "true");
 
 	async function loadUser() {
-		// console.log("User id: ", user.getUser().id)
 		let config = {
 			method: "GET",
 			url: `${env.VITE_BE_API}/users/${User.value.id}`,
@@ -57,7 +59,6 @@
 		await axios
 			.request(config)
 			.then((response) => {
-				// console.log("User: ", User.value);
 				User.value = response.data;
 			})
 			.catch((error) => {

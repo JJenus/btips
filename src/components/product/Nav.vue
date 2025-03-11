@@ -22,15 +22,9 @@ const signIn = inject("authMode");
 						class="btn btn-icon btn-active-color-primary me-3 d-flex d-lg-none ms-n2"
 						id="kt_landing_menu_toggle"
 					>
-						<!--begin::Svg Icon | path: icons/duotune/abstract/abs015.svg-->
+						<!--begin::Svg Icon-->
 						<span class="svg-icon svg-icon-1">
-							<svg
-								width="24"
-								height="24"
-								viewBox="0 0 24 24"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-							>
+							<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path
 									d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z"
 									fill="currentColor"
@@ -48,11 +42,7 @@ const signIn = inject("authMode");
 
 					<!--begin::Logo image-->
 					<a href="landing.html">
-						<img
-							alt="Logo"
-							src="/assets/logo-default.png"
-							class="h-md-50px mb-4 h-35px"
-						/>
+						<img alt="Logo" src="/assets/logo-default.png" class="h-md-50px mb-4 h-35px" />
 					</a>
 					<!--end::Logo image-->
 				</div>
@@ -80,59 +70,33 @@ const signIn = inject("authMode");
 						>
 							<!--begin::Menu item-->
 							<div class="menu-item">
-								<!--begin::Menu link-->
-								<a
-									class="menu-link nav-link active py-3 px-4 px-xxl-6"
-									href="#kt_body"
-									data-kt-scroll-toggle="true"
-									data-kt-drawer-dismiss="true"
-								>
-									Home
+								<a class="menu-link nav-link active py-3 px-4 px-xxl-6" href="#kt_body" data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">
+									{{ $t("nav.home") }}
 								</a>
-								<!--end::Menu link-->
 							</div>
 							<!--end::Menu item-->
+
 							<!--begin::Menu item-->
 							<div class="menu-item">
-								<!--begin::Menu link-->
-								<a
-									class="menu-link nav-link py-3 px-4 px-xxl-6"
-									href="#how-it-works"
-									data-kt-scroll-toggle="true"
-									data-kt-drawer-dismiss="true"
-								>
-									How it Works
+								<a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#how-it-works" data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">
+									{{ $t("nav.howItWorks") }}
 								</a>
-								<!--end::Menu link-->
 							</div>
 							<!--end::Menu item-->
+
 							<!--begin::Menu item-->
 							<div class="menu-item">
-								<!--begin::Menu link-->
-								<a
-									class="menu-link nav-link py-3 px-4 px-xxl-6"
-									href="#fatures"
-									data-kt-scroll-toggle="true"
-									data-kt-drawer-dismiss="true"
-								>
-									Features
+								<a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#features" data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">
+									{{ $t("nav.features") }}
 								</a>
-								<!--end::Menu link-->
 							</div>
 							<!--end::Menu item-->
 
 							<!--begin::Menu item-->
 							<div class="menu-item d-none">
-								<!--begin::Menu link-->
-								<a
-									class="menu-link nav-link py-3 px-4 px-xxl-6"
-									href="#projects"
-									data-kt-scroll-toggle="true"
-									data-kt-drawer-dismiss="true"
-								>
-									Projects
+								<a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#projects" data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">
+									{{ $t("nav.projects") }}
 								</a>
-								<!--end::Menu link-->
 							</div>
 							<!--end::Menu item-->
 						</div>
@@ -142,16 +106,9 @@ const signIn = inject("authMode");
 				<!--end::Menu wrapper-->
 
 				<!--begin::Toolbar-->
-				<div
-					class="flex-equal text-end ms-1 position-relative z-index-2"
-				>
-					<button
-						data-bs-toggle="modal"
-						data-bs-target="#authModal"
-						@click="signIn = 'login'"
-						class="btn btn-danger"
-					>
-						Sign In
+				<div class="flex-equal text-end ms-1 position-relative z-index-2">
+					<button data-bs-toggle="modal" data-bs-target="#authModal" @click="signIn = 'login'" class="btn btn-danger">
+						{{ $t("nav.signIn") }}
 					</button>
 				</div>
 				<!--end::Toolbar-->

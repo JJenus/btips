@@ -1,3 +1,5 @@
+<script setup></script>
+
 <template>
 	<div
 		class="card mb-5 mb-xl-10"
@@ -12,7 +14,7 @@
 			data-bs-target="#kt_account_signin_method"
 		>
 			<div class="card-title m-0">
-				<h3 class="fw-bold m-0">Tips</h3>
+				<h3 class="fw-bold m-0">{{ $t("app.tips.title") }}</h3>
 			</div>
 		</div>
 		<!--end::Card header-->
@@ -60,12 +62,11 @@
 						<!--begin::Content-->
 						<div class="mb-3 mb-md-0 fw-semibold">
 							<h4 class="text-gray-900 fw-bold">
-								Your activated tips will show here
+								{{ $t("app.tips.notice.heading") }}
 							</h4>
 
 							<div class="fs-6 text-gray-700 pe-7">
-								Make sure to subscribe and contact support at
-								will to get your instant tips.
+								{{ $t("app.tips.notice.text") }}
 							</div>
 						</div>
 						<!--end::Content-->
@@ -75,7 +76,7 @@
 							href="#"
 							class="btn btn-primary px-6 align-self-center text-nowrap"
 						>
-							Support
+							{{ $t("app.tips.notice.supportButton") }}
 						</a>
 						<!--end::Action-->
 					</div>

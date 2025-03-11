@@ -1,551 +1,210 @@
 <script setup>
-	import { inject, onMounted, ref } from "vue";
-	import axios from "axios";
-	import { user } from "../stores/user";
-	import { alert } from "../stores/utility";
-	import RequestPassReset from "./product/RequestPassReset.vue";
+import { inject, onMounted, ref } from "vue";
+import axios from "axios";
+import { user } from "../stores/user";
+import { alert } from "../stores/utility";
+import { useI18n } from "vue-i18n";
+import RequestPassReset from "./product/RequestPassReset.vue";
 
-	const env = import.meta.env;
+const { t } = useI18n();
+const env = import.meta.env;
 
-	const signIn = inject("authMode");
-	const loadingReg = ref(false);
-	const passType = ref("password");
+const signIn = inject("authMode");
+const loadingReg = ref(false);
+const passType = ref("password");
 
-	const form = ref({
-		name: null,
-		email: null,
-		password: null,
-		cPassword: null,
-	});
+const form = ref({
+  name: null,
+  email: null,
+  password: null,
+  cPassword: null,
+});
 
-	const regError = ref(null);
-	const loginError = ref(null);
+const regError = ref(null);
+const loginError = ref(null);
 
-	function register() {
-		regError.value = null;
+function register() {
+  regError.value = null;
 
-		if (loadingReg.value) {
-			return;
-		}
-		if (
-			!form.value.email ||
-			!form.value.name ||
-			!form.value.password ||
-			!form.value.cPassword
-		) {
-			regError.value = "Please fill form correctly";
+  if (loadingReg.value) return;
 
-			alert.error(regError.value);
-			return;
-		}
+  if (!form.value.email || !form.value.name || !form.value.password || !form.value.cPassword) {
+    regError.value = t("authModal.errors.fillForm");
+    alert.error(regError.value);
+    return;
+  }
 
-		window.debug.log(regError.value);
+  if (form.value.password !== form.value.cPassword) {
+    regError.value = t("authModal.errors.passwordMismatch");
+    alert.error(regError.value);
+    return;
+  }
 
-		if (form.value.password !== form.value.cPassword) {
-			regError.value = "Passwords don't match";
-			alert.error(regError.value);
-			return;
-		}
+  loadingReg.value = true;
 
-		loadingReg.value = true;
+  const { name, email, password } = form.value;
 
-		const { name, email, password } = form.value;
+  axios
+    .post(`${env.VITE_BE_API}/auth/register`, { name, email, password }, { timeout: 20000 })
+    .then((response) => {
+      if (response.data.error) {
+        regError.value = response.data.error;
+        alert.error(regError.value);
+      } else {
+        user.login(response.data);
+        alert.success(t("authModal.register.loadingText"));
+        window.location.href = "/app#subscription_plans";
+      }
+    })
+    .catch((error) => {
+      alert.error(error.message.includes("timeout") ? t("authModal.errors.networkError") : t("authModal.errors.invalidCredentials"));
+    })
+    .finally(() => {
+      loadingReg.value = false;
+    });
+}
 
-		let config = {
-			method: "Post",
-			url: `${env.VITE_BE_API}/auth/register`,
-			data: {
-				name,
-				email,
-				password,
-			},
-			timeout: 20000,
-		};
+function sumitLogin() {
+  if (loadingReg.value) return;
 
-		axios
-			.request(config)
-			.then((response) => {
-				window.debug.log(response.data);
-				if (response.data.error) {
-					regError.value = response.data.error;
-					alert.error(regError.value);
-				} else {
-					user.login(response.data);
-					alert.success("Signing you in. Please wait.");
-					window.location.href = "/app#subscription_plans";
-				}
-			})
-			.catch(function (error) {
-				if (error.message.includes("timeout")) {
-					window.debug.log("Request timed out");
-					alert.error("Please check your internet connection");
-				} else {
-					window.debug.log(error);
-					alert.error("Failed to login");
-				}
-			})
-			.finally(() => {
-				loadingReg.value = false;
-			});
-	}
+  if (!form.value.email || !form.value.password) {
+    loginError.value = t("authModal.errors.fillForm");
+    alert.error(loginError.value);
+    return;
+  }
 
-	function sumitLogin() {
-		if (loadingReg.value) {
-			return;
-		}
-		if (!form.value.email || !form.value.password) {
-			loginError.value = "Please fill form correctly";
-			alert.error(loginError.value);
-			return;
-		}
+  loadingReg.value = true;
 
-		window.debug.log(loginError.value);
+  axios
+    .post(`${env.VITE_BE_API}/auth/login`, { email: form.value.email, password: form.value.password }, { timeout: 20000 })
+    .then((response) => {
+      if (response.data.error) {
+        loginError.value = response.data.error;
+        alert.error(loginError.value);
+      } else {
+        user.login(response.data);
+        alert.success(t("authModal.login.loadingText"));
+        window.location.href = "/app#subscription_plans";
+      }
+    })
+    .catch((error) => {
+      alert.error(error.message.includes("timeout") ? t("authModal.errors.networkError") : t("authModal.errors.invalidCredentials"));
+    })
+    .finally(() => {
+      loadingReg.value = false;
+    });
+}
 
-		loadingReg.value = true;
-
-		const { email, password } = form.value;
-		window.debug.log(email);
-
-		let config = {
-			method: "Post",
-			url: `${env.VITE_BE_API}/auth/login`,
-			data: {
-				email,
-				password,
-			},
-			timeout: 20000,
-		};
-
-		axios
-			.request(config)
-			.then((response) => {
-				window.debug.log(response.data);
-				if (response.data.error) {
-					loginError.value = response.data.error;
-					alert.error(loginError.value);
-				} else {
-					user.login(response.data);
-					alert.success("Authorized");
-					window.location.href = "/app#subscription_plans	";
-				}
-			})
-			.catch(function (error) {
-				if (error.message.includes("timeout")) {
-					// Request was canceled due to timeout
-					window.debug.log("Request timed out");
-					// Handle the timeout error here
-					alert.error("Please check your internet connection");
-				} else {
-					alert.error("Unable to login. Check your credentials.");
-					window.debug.log(error);
-				}
-			})
-			.finally(() => {
-				loadingReg.value = false;
-			});
-	}
-
-	onMounted(() => {});
+onMounted(() => {});
 </script>
 
 <template>
-	<div
-		class="modal fade"
-		id="authModal"
-		tabindex="-1"
-		role="dialog"
-		aria-labelledby="authModal"
-		aria-hidden="true"
-	>
-		<div
-			class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down"
-			role="document"
-		>
-			<div class="modal-content rounded">
-				<div class="modal-body p-0">
-					<div
-						class="card position-relative h-100 border-gray-300 p-3 px-md-4"
-					>
-						<div class="card-body">
-							<div class="position-absolute top-0 end-0 m-4">
-								<button
-									type="button"
-									class="btn btn-light-danger btn-icon btn-sm"
-									data-bs-dismiss="modal"
-									aria-label="Close"
-								>
-									<i class="fa-solid fa-times m-0 p-0"></i>
-								</button>
-							</div>
-							<!--begin::Form-->
-							<form
-								@submit.prevent="sumitLogin()"
-								v-if="signIn == 'login'"
-								class="form w-100 h-100"
-								novalidate="novalidate"
-								id="kt_sign_in_form"
-							>
-								<!--begin::Heading-->
-								<div class="text-center mb-10">
-									<!--begin::Title-->
-									<h1 class="text-dark mb-3">
-										Sign In to Good
-									</h1>
-									<!--end::Title-->
+  <div class="modal fade" id="authModal" tabindex="-1" role="dialog" aria-labelledby="authModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down" role="document">
+      <div class="modal-content rounded">
+        <div class="modal-body p-0">
+          <div class="card position-relative h-100 border-gray-300 p-3 px-md-4">
+            <div class="card-body">
+              <div class="position-absolute top-0 end-0 m-4">
+                <button type="button" class="btn btn-light-danger btn-icon btn-sm" data-bs-dismiss="modal" aria-label="Close">
+                  <i class="fa-solid fa-times m-0 p-0"></i>
+                </button>
+              </div>
 
-									<!--begin::Link-->
-									<div class="text-gray-400 fw-semibold fs-4">
-										New Here?
+              <form @submit.prevent="sumitLogin()" v-if="signIn == 'login'" class="form w-100 h-100">
+                <div class="text-center mb-10">
+                  <h1 class="text-dark mb-3">{{ $t("authModal.login.title") }}</h1>
+                  <div class="text-gray-400 fw-semibold fs-4">
+                    {{ $t("authModal.login.newHere") }}
+                    <a @click="signIn = 'create'" role="button" class="link-primary fw-bold">
+                      {{ $t("authModal.login.createAccount") }}
+                    </a>
+                  </div>
+                </div>
 
-										<a
-											@click="signIn = 'create'"
-											role="button"
-											class="link-primary fw-bold"
-										>
-											Create an Account
-										</a>
-									</div>
-									<!--end::Link-->
-								</div>
-								<!--begin::Heading-->
+                <div class="fv-row mb-10">
+                  <label class="form-label fs-6 fw-bold text-dark">{{ $t("authModal.login.emailLabel") }}</label>
+                  <input class="form-control form-control-lg form-control-solid" type="text" v-model="form.email" />
+                </div>
 
-								<!--begin::Input group-->
-								<div class="fv-row mb-10">
-									<!--begin::Label-->
-									<label
-										class="form-label fs-6 fw-bold text-dark"
-										>Email</label
-									>
-									<!--end::Label-->
+                <div class="fv-row mb-10">
+                  <div class="d-flex flex-stack mb-2">
+                    <label class="form-label fw-bold text-dark fs-6 mb-0">{{ $t("authModal.login.passwordLabel") }}</label>
+                    <a @click="signIn = 'reset'" role="button" class="link-primary fs-6 fw-bold">
+                      {{ $t("authModal.login.forgotPassword") }}
+                    </a>
+                  </div>
+                  <div class="input-group">
+                    <input class="form-control form-control-lg form-control-solid" :type="passType" v-model="form.password" />
+                    <span class="input-group-text border-0">
+                      <a role="button" @click="passType = passType === 'text' ? 'password' : 'text'">
+                        <i :class="passType === 'text' ? 'la-eye-slash' : 'la-eye'" class="las fs-1"></i>
+                      </a>
+                    </span>
+                  </div>
+                </div>
 
-									<!--begin::Input-->
-									<input
-										class="form-control form-control-lg form-control-solid"
-										type="text"
-										name="email"
-										autocomplete="off"
-										v-model="form.email"
-									/>
-									<!--end::Input-->
-								</div>
-								<!--end::Input group-->
+                <div class="text-center">
+                  <button type="submit" class="btn btn-lg btn-primary w-100 mb-5" :class="loadingReg ? 'disabled' : ''">
+                    <span v-if="!loadingReg">{{ $t("authModal.login.submitText") }}</span>
+                    <span v-else>
+                      {{ $t("authModal.login.loadingText") }}
+                      <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                    </span>
+                  </button>
+                  <p v-if="loginError" class="alert alert-danger p-3 py-1">{{ loginError }}</p>
+                </div>
+              </form>
 
-								<!--begin::Input group-->
-								<div class="fv-row mb-10">
-									<!--begin::Wrapper-->
-									<div class="d-flex flex-stack mb-2">
-										<!--begin::Label-->
-										<label
-											class="form-label fw-bold text-dark fs-6 mb-0"
-											>Password</label
-										>
-										<!--end::Label-->
+              <form v-else-if="signIn == 'create'" class="form w-100" @submit.prevent="register()">
+                <div class="mb-10 text-center">
+                  <h1 class="text-dark mb-3">{{ $t("authModal.register.title") }}</h1>
+                  <div class="text-gray-400 fw-semibold fs-4">
+                    {{ $t("authModal.register.alreadyHaveAccount") }}
+                    <a @click="signIn = 'login'" role="button" class="link-primary fw-bold">
+                      {{ $t("authModal.register.signIn") }}
+                    </a>
+                  </div>
+                </div>
 
-										<!--begin::Link-->
-										<a
-											@click="signIn = 'reset'"
-											role="button"
-											class="link-primary fs-6 fw-bold"
-										>
-											Forgot Password ?
-										</a>
-										<!--end::Link-->
-									</div>
-									<!--end::Wrapper-->
+                <div class="row fv-row mb-7">
+                  <div class="col">
+                    <label class="form-label fw-bold text-dark fs-6">{{ $t("authModal.register.nameLabel") }}</label>
+                    <input class="form-control form-control-lg form-control-solid" type="text" v-model="form.name" />
+                  </div>
+                </div>
 
-									<!--begin::Input-->
-									<div class="input-group">
-										<input
-											class="form-control form-control-lg form-control-solid"
-											:type="passType"
-											name="password"
-											autocomplete="off"
-											v-model="form.password"
-										/>
-										<span class="input-group-text border-0">
-											<a
-												role="button"
-												@click="
-													passType == 'text'
-														? (passType =
-																'password')
-														: (passType = 'text')
-												"
-											>
-												<i
-													:class="
-														passType == 'text'
-															? 'la-eye-slash'
-															: 'la-eye'
-													"
-													class="las fs-1"
-												></i>
-											</a>
-										</span>
-									</div>
-									<!--end::Input-->
-								</div>
-								<!--end::Input group-->
+                <div class="fv-row mb-7">
+                  <label class="form-label fw-bold text-dark fs-6">{{ $t("authModal.register.emailLabel") }}</label>
+                  <input class="form-control form-control-lg form-control-solid" type="email" v-model="form.email" />
+                </div>
 
-								<!--begin::Actions-->
-								<div class="text-center">
-									<!--begin::Submit button-->
-									<button
-										type="submit"
-										id="kt_sign_in_submit"
-										class="btn btn-lg btn-primary w-100 mb-5"
-										:class="loadingReg ? 'disabled' : ''"
-									>
-										<span v-if="!loadingReg">
-											Continue
-										</span>
-										<span v-else>
-											Signing In...
-											<span
-												class="spinner-border spinner-border-sm align-middle ms-2"
-												role="status"
-												aria-hidden="true"
-											></span>
-										</span>
-									</button>
-									<!--end::Submit button-->
+                <div class="fv-row mb-10">
+                  <label class="form-label fw-bold text-dark fs-6">{{ $t("authModal.register.passwordLabel") }}</label>
+                  <input class="form-control form-control-lg form-control-solid" :type="passType" v-model="form.password" />
+                </div>
 
-									<p
-										v-if="loginError != null"
-										class="alert alert-danger p-3 py-1"
-									>
-										{{ loginError }}
-									</p>
-								</div>
-								<!--end::Actions-->
-							</form>
+                <div class="fv-row mb-5">
+                  <label class="form-label fw-bold text-dark fs-6">{{ $t("authModal.register.confirmPasswordLabel") }}</label>
+                  <input class="form-control form-control-lg form-control-solid" :type="passType" v-model="form.cPassword" />
+                </div>
 
-							<!--begin::Form-->
-							<form
-								v-else-if="signIn == 'create'"
-								class="form w-100"
-								novalidate="novalidate"
-								id="kt_sign_up_form"
-								@submit.prevent="register()"
-							>
-								<!--begin::Heading-->
-								<div class="mb-10 text-center">
-									<!--begin::Title-->
-									<h1 class="text-dark mb-3">
-										Create an Account
-									</h1>
-									<!--end::Title-->
+                <div class="text-center">
+                  <button type="submit" class="btn btn-lg btn-primary">
+                    <span v-if="!loadingReg">{{ $t("authModal.register.submitText") }}</span>
+                    <span v-else>
+                      {{ $t("authModal.register.loadingText") }}
+                      <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                    </span>
+                  </button>
+                </div>
+              </form>
 
-									<!--begin::Link-->
-									<div class="text-gray-400 fw-semibold fs-4">
-										Already have an account?
-
-										<a
-											@click="signIn = 'login'"
-											role="button"
-											class="link-primary fw-bold"
-										>
-											Sign in here
-										</a>
-									</div>
-									<!--end::Link-->
-								</div>
-								<!--end::Heading-->
-
-								<!--begin::Separator-->
-								<div class="d-flex align-items-center mb-10">
-									<div
-										class="border-bottom border-gray-300 mw-50 w-100"
-									></div>
-									<span
-										class="fw-semibold text-gray-400 fs-7 mx-2"
-										>YES</span
-									>
-									<div
-										class="border-bottom border-gray-300 mw-50 w-100"
-									></div>
-								</div>
-								<!--end::Separator-->
-
-								<!--begin::Input group-->
-								<div class="row fv-row mb-7">
-									<!--begin::Col-->
-									<div class="col">
-										<label
-											class="form-label fw-bold text-dark fs-6"
-											>Name</label
-										>
-										<input
-											class="form-control form-control-lg form-control-solid"
-											type="text"
-											placeholder=""
-											name="first-name"
-											autocomplete="off"
-											v-model="form.name"
-										/>
-									</div>
-									<!--end::Col-->
-								</div>
-								<!--end::Input group-->
-
-								<!--begin::Input group-->
-								<div class="fv-row mb-7">
-									<label
-										class="form-label fw-bold text-dark fs-6"
-										>Email</label
-									>
-									<input
-										class="form-control form-control-lg form-control-solid"
-										type="email"
-										placeholder=""
-										name="email"
-										autocomplete="off"
-										v-model="form.email"
-									/>
-								</div>
-								<!--end::Input group-->
-
-								<!--begin::Input group-->
-								<div
-									class="mb-10 fv-row"
-									data-kt-password-meter="true"
-								>
-									<!--begin::Wrapper-->
-									<div class="mb-1">
-										<!--begin::Label-->
-										<label
-											class="form-label fw-bold text-dark fs-6"
-										>
-											Password
-										</label>
-										<!--end::Label-->
-
-										<!--begin::Input wrapper-->
-										<div
-											class="input-group position-relative mb-3"
-										>
-											<input
-												class="form-control form-control-lg form-control-solid"
-												:type="passType"
-												name="password"
-												autocomplete="off"
-												v-model="form.password"
-											/>
-											<span
-												class="input-group-text border-0"
-											>
-												<a
-													role="button"
-													@click="
-														passType == 'text'
-															? (passType =
-																	'password')
-															: (passType =
-																	'text')
-													"
-												>
-													<i
-														:class="
-															passType == 'text'
-																? 'la-eye-slash'
-																: 'la-eye'
-														"
-														class="las fs-1"
-													></i>
-												</a>
-											</span>
-										</div>
-										<!--end::Input wrapper-->
-									</div>
-									<!--end::Wrapper-->
-
-									<!--begin::Hint-->
-									<div class="text-muted">
-										Use 8 or more characters with a mix of
-										letters, numbers & symbols.
-									</div>
-									<!--end::Hint-->
-								</div>
-								<!--end::Input group--->
-
-								<!--begin::Input group-->
-								<div class="fv-row mb-5">
-									<label
-										class="form-label fw-bold text-dark fs-6"
-										>Confirm Password</label
-									>
-									<input
-										class="form-control form-control-lg form-control-solid"
-										:type="passType"
-										placeholder=""
-										name="confirm-password"
-										autocomplete="off"
-										v-model="form.cPassword"
-									/>
-								</div>
-								<!--end::Input group-->
-
-								<!--begin::Input group-->
-								<div class="fv-row mb-10">
-									<label
-										class="form-check form-check-custom form-check-solid form-check-inline"
-									>
-										<input
-											class="form-check-input"
-											type="checkbox"
-											name="toc"
-											checked
-											required
-										/>
-										<span
-											class="form-check-label fw-semibold text-gray-700 fs-6"
-										>
-											I Agree
-											<a
-												href="#"
-												class="ms-1 link-primary"
-												>Terms and conditions</a
-											>.
-										</span>
-									</label>
-								</div>
-								<!--end::Input group-->
-
-								<!--begin::Actions-->
-								<div class="text-center">
-									<button
-										type="submit"
-										id="kt_sign_up_submit"
-										class="btn btn-lg btn-primary"
-										:class="loadingReg ? 'disabled' : ''"
-									>
-										<span v-if="!loadingReg"> Submit </span>
-										<span v-else>
-											Please wait...
-											<span
-												class="spinner-border spinner-border-sm align-middle ms-2"
-												role="status"
-												aria-hidden="true"
-											></span>
-										</span>
-									</button>
-								</div>
-
-								<p
-									v-if="regError != null"
-									class="alert alert-danger p-3 py-1 mt-3"
-								>
-									{{ regError }}
-								</p>
-								<!--end::Actions-->
-							</form>
-							<!--end::Form-->
-
-							<RequestPassReset v-if="signIn == 'reset'" />
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+              <RequestPassReset v-if="signIn == 'reset'" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>

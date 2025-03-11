@@ -148,7 +148,7 @@
     <!--begin::Menu item-->
     <div class="menu-item px-5">
       <a @click="user.logout()" role="button" class="menu-link px-5">
-        Sign Out
+        {{ $t("auth.signOut") }}
       </a>
     </div>
     <!--end::Menu item-->

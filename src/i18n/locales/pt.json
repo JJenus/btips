@@ -1,0 +1,247 @@
+{
+	"locale": {
+		"locale": "Português",
+        "pt": "Português", 
+		"en": "Inglês",
+		"es": "Espanhol",
+		"fr": "Francês",
+		"flag": "https://static.vecteezy.com/system/resources/thumbnails/010/870/761/small/american-flag-of-united-states-of-america-png.png"
+	},
+
+	"auth": {
+		"signIn": "Entrar",
+		"signUp": "Cadastrar",
+		"signOut": "Sair"
+	},
+	"hero": {
+		"title": "The Bettors Tips"
+	},
+	"pricing": {
+		"title": "Bettorstips - Sua Solução Tudo-em-Um para Sucesso em Apostas!",
+		"description": "Experimente o poder de resultados instantâneos, uma experiência de usuário perfeita e previsões confiáveis em um só lugar. Com o \"Bettorstips\", sua jornada de apostas é simplificada, dando a você a vantagem definitiva para maximizar suas chances de sucesso. Confie em nossa plataforma para fornecer previsões precisas, oferecendo os insights necessários para tomar decisões informadas. Diga adeus à incerteza e abrace uma experiência de apostas simplificada com o \"Bettorstips\".",
+		"summary": "Na verdade, o \"Bettorstips\" oferece resultados instantâneos, uma experiência de usuário perfeita e previsões confiáveis, simplificando sua jornada de apostas e maximizando suas chances de sucesso."
+	},
+	"stats": {
+		"satisfaction": "Satisfação",
+		"customers": "Clientes",
+		"transactions": "Transações"
+	},
+	"howItWorks": {
+		"title": "Nosso Guia de 3 Passos para Acesso Ideal Hoje",
+		"steps": {
+			"0": {
+				"id": 1,
+				"title": "Crie Sua Conta",
+				"subtitle": "- Seu Portal para Apostas Vencedoras!",
+				"description": "Maximize seu sucesso em apostas esportivas ingressando em nossa comunidade premium. Tenha acesso a insights de especialistas, dados em tempo real e ferramentas poderosas para a vantagem vencedora.",
+				"image": "/assets/media/svg/illustrations/easy-2/1.svg"
+			},
+			"1": {
+				"id": 2,
+				"title": "Assine",
+				"subtitle": "- Ganhe uma Vantagem Injusta!",
+				"description": "Potencialize suas estratégias com nossos serviços premium. Obtenha previsões precisas adaptadas aos seus esportes e preferências de apostas. Libere todo o seu potencial de apostas hoje.",
+				"image": "/assets/media/svg/illustrations/easy-2/2.svg"
+			},
+			"2": {
+				"id": 3,
+				"title": "Comece a Ganhar",
+				"subtitle": "- Aposte com Inteligência, Ganhe Grande!",
+				"description": "É hora de transformar suas previsões em lucros e celebrar os momentos de vitória. Armado com os recursos poderosos de nossa plataforma e os benefícios da sua assinatura, você está pronto para fazer apostas informadas que aumentam as chances a seu favor.",
+				"image": "/assets/media/svg/illustrations/easy-2/3.svg"
+			},
+			"3": {
+				"id": 4,
+				"title": "Saque Seus Ganhos",
+				"subtitle": "- Aproveite Seus Lucros!",
+				"description": "Resgate seus ganhos de forma fácil e segura. Nosso processo rápido de saque garante que seus ganhos estejam em suas mãos sempre que precisar.",
+				"image": "/assets/media/svg/illustrations/easy-2/4.svg"
+			}
+		}
+	},
+	"features": {
+		"title": "Como Funciona",
+		"steps": {
+			"1": {
+				"title": "Cadastre-se",
+				"description": "Crie sua conta para começar.",
+				"icon": "fas fa-user-plus",
+				"iconClass": "text-primary"
+			},
+			"2": {
+				"title": "Escolha um Plano",
+				"description": "Selecione o melhor plano para suas necessidades.",
+				"icon": "fas fa-list-alt",
+				"iconClass": "text-success"
+			},
+			"3": {
+				"title": "Faça Apostas",
+				"description": "Use previsões de especialistas para fazer apostas inteligentes.",
+				"icon": "fas fa-futbol",
+				"iconClass": "text-warning"
+			},
+			"4": {
+				"title": "Ganhe Recompensas",
+				"description": "Aproveite seus ganhos e maximize seus lucros.",
+				"icon": "fas fa-trophy",
+				"iconClass": "text-danger"
+			}
+		}
+	},
+	"footer": {
+		"seamlessCommunication": {
+			"title": "Precisa de uma Comunicação Perfeita?",
+			"description": "Envie-nos um e-mail para",
+			"email": "support@thebettortips.com"
+		},
+		"startWinning": {
+			"title": "Que Tal Começar a Ganhar?",
+			"description": "Cadastre-se agora para uma jornada incrível",
+			"cta": "Clique para Cadastrar"
+		},
+		"moreForGood": {
+			"title": "Mais para o Bem",
+			"links": {
+				"faq": "FAQ",
+				"documentation": "Documentações",
+				"videoTuts": "Tutoriais em Vídeo",
+				"changelog": "Registro de Alterações",
+				"supportForum": "Fórum de Suporte",
+				"blog": "Blog"
+			}
+		},
+		"stayConnected": {
+			"title": "Mantenha-se Conectado",
+			"socials": {
+				"facebook": "Facebook",
+				"twitter": "Twitter",
+				"instagram": "Instagram"
+			}
+		},
+		"copyright": {
+			"text": "Copyright &copy; {{ AppName }} 2023"
+		},
+		"menu": {
+			"about": "Sobre",
+			"support": "Suporte",
+			"purchase": "Comprar"
+		}
+	},
+	"nav": {
+		"home": "Início",
+		"howItWorks": "Como Funciona",
+		"features": "Recursos",
+		"projects": "Projetos",
+		"signIn": "Entrar"
+	},
+
+	"authModal": {
+		"login": {
+			"title": "Entrar no Good",
+			"newHere": "Novo aqui?",
+			"createAccount": "Crie uma Conta",
+			"emailLabel": "E-mail",
+			"passwordLabel": "Senha",
+			"forgotPassword": "Esqueceu a Senha?",
+			"submitText": "Continuar",
+			"loadingText": "Entrando..."
+		},
+		"register": {
+			"title": "Criar uma Conta",
+			"alreadyHaveAccount": "Já tem uma conta?",
+			"signIn": "Entre aqui",
+			"nameLabel": "Nome",
+			"emailLabel": "E-mail",
+			"passwordLabel": "Senha",
+			"confirmPasswordLabel": "Confirme a Senha",
+			"passwordHint": "Use 8 ou mais caracteres com uma mistura de letras, números e símbolos.",
+			"agreeTerms": "Eu Concordo",
+			"termsLink": "Termos e condições",
+			"submitText": "Enviar",
+			"loadingText": "Por favor, aguarde..."
+		},
+		"errors": {
+			"fillForm": "Preencha o formulário corretamente",
+			"passwordMismatch": "As senhas não coincidem",
+			"invalidCredentials": "Não foi possível fazer login. Verifique suas credenciais."
+		}
+	},
+
+	"app": {
+		"deactivate": {
+			"title": "Desativar Conta",
+			"noticeTitle": "Você Está Desativando Sua Conta",
+			"noticeDescription": "Por favor, tente resolver qualquer problema com o suporte, esta ação não é reversível.",
+			"confirmText": "Confirmo a desativação da minha conta",
+			"button": "Desativar Conta",
+			"deleting": "Deletando...",
+			"alerts": {
+				"accountDeleted": "Conta Deletada",
+				"failed": "Falha",
+				"checkToPermit": "Marque sim para permitir a ação"
+			}
+		},
+		"profile": {
+			"title": "Detalhes do Perfil",
+			"avatar": "Avatar",
+			"avatarHint": "Tipos de arquivo permitidos: png, jpg, jpeg.",
+			"changeAvatar": "Alterar avatar",
+			"cancelAvatar": "Cancelar avatar",
+			"removeAvatar": "Remover avatar",
+			"fullName": "Nome Completo",
+			"phone": "Telefone de Contato",
+			"phoneHint": "(opcional)",
+			"phoneTooltip": "O número de telefone deve estar ativo",
+			"address": "Endereço",
+			"country": "País",
+			"city": "Cidade",
+			"zip": "CEP",
+			"zipHint": "(opcional)",
+			"discard": "Descartar",
+			"saveChanges": "Salvar Alterações",
+			"saving": "Salvando...",
+			"alerts": {
+				"newImageSelected": "Nova imagem selecionada",
+				"accountUpdated": "Sucesso",
+				"failed": "Falha",
+				"checkConnection": "Por favor, verifique sua conexão.",
+				"fillFormCorrectly": "Preencha o formulário corretamente"
+			}
+		},
+		"subscr": {
+			"title": "Assinaturas Disponíveis",
+			"notice": {
+				"text": "Selecione qualquer um dos planos de assinatura disponíveis para obter os melhores resultados ou entre em contato com o suporte para planos personalizados."
+			}
+		},
+		"overview": {
+			"title": "Visão Geral",
+			"notSubscribed": "Não Assinado",
+			"subscribe": "Assinar",
+			"notice": {
+				"title": "Precisamos da Sua Atenção!",
+				"text": "Assine um plano agora.",
+				"link": "Clique para Assinar"
+			},
+			"mySubscriptions": {
+				"title": "Minhas Assinaturas",
+				"noSubscriptions": "Nenhuma assinatura encontrada"
+			}
+		},
+		"tips": {
+			"title": "Dicas",
+			"notice": {
+				"heading": "Suas dicas ativadas aparecerão aqui",
+				"text": "Certifique-se de assinar e entrar em contato com o suporte para obter suas dicas instantâneas.",
+				"supportButton": "Suporte"
+			}
+		},
+		"navs": {
+			"overview": "Visão Geral",
+			"tips": "Dicas",
+			"subscriptionPlans": "Planos de Assinatura",
+			"profileDetails": "Detalhes do Perfil",
+			"deactivateAccount": "Desativar Conta"
+		}
+	}
+}

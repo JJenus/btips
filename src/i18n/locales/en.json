@@ -1,0 +1,247 @@
+{
+	"locale": {
+		"locale": "English",
+		"en": "English",
+		"es": "Spanish",
+		"fr": "French",
+		"pt": "Portuguese",
+		"flag": "https://static.vecteezy.com/system/resources/thumbnails/010/870/761/small/american-flag-of-united-states-of-america-png.png"
+	},
+
+	"auth": {
+		"signIn": "Sign In",
+		"signUp": "Sign Up",
+		"signOut": "Sign Out"
+	},
+	"hero": {
+		"title": "The Bettors Tips"
+	},
+	"pricing": {
+		"title": "Bettorstips - Your All-in-One Solution for Betting Success!",
+		"description": "Experience the power of instant results, a seamless user experience, and reliable predictions all in one place. With \"Bettorstips\" your betting journey is simplified, giving you the ultimate advantage to maximize your chances of success. Trust in our platform to deliver accurate predictions, providing you with the insights you need to make informed decisions. Say goodbye to uncertainty and embrace a streamlined betting experience with \"Bettorstips\".",
+		"summary": "In fact \"Bettorstips\" offers instant results, a seamless user experience, and reliable predictions, simplifying your betting journey and maximizing your chances of success."
+	},
+	"stats": {
+		"satisfaction": "Satisfaction",
+		"customers": "Customers",
+		"transactions": "Transactions"
+	},
+	"howItWorks": {
+		"title": "Our 3-Step Guide for How to Optimum Access Today",
+		"steps": {
+			"0": {
+				"id": 1,
+				"title": "Create Your Account",
+				"subtitle": "- Your Gateway to Winning Bets!",
+				"description": "Maximize your sports betting success by joining our premier community. Gain access to expert insights, real-time data, and powerful tools for the winning edge.",
+				"image": "/assets/media/svg/illustrations/easy-2/1.svg"
+			},
+			"1": {
+				"id": 2,
+				"title": "Subscribe",
+				"subtitle": "- Gain an Unfair Advantage!",
+				"description": "Supercharge your strategies with our premium services. Get accurate predictions tailored to your preferred sports and betting preferences. Unlock your full betting potential today.",
+				"image": "/assets/media/svg/illustrations/easy-2/2.svg"
+			},
+			"2": {
+				"id": 3,
+				"title": "Start Winning",
+				"subtitle": "- Bet Smart, Score Big!",
+				"description": "It's time to turn your predictions into profits and celebrate those winning moments. Armed with our platform's powerful resources and your subscription benefits, you're ready to make informed bets that stack the odds in your favor.",
+				"image": "/assets/media/svg/illustrations/easy-2/3.svg"
+			},
+			"3": {
+				"id": 4,
+				"title": "Withdraw Earnings",
+				"subtitle": "- Enjoy Your Profits!",
+				"description": "Cash out your winnings easily and securely. Our fast withdrawal process ensures that your earnings are in your hands whenever you need them.",
+				"image": "/assets/media/svg/illustrations/easy-2/4.svg"
+			}
+		}
+	},
+	"features": {
+		"title": "How It Works",
+		"steps": {
+			"1": {
+				"title": "Sign Up",
+				"description": "Create your account to get started.",
+				"icon": "fas fa-user-plus",
+				"iconClass": "text-primary"
+			},
+			"2": {
+				"title": "Choose a Plan",
+				"description": "Select the best plan for your needs.",
+				"icon": "fas fa-list-alt",
+				"iconClass": "text-success"
+			},
+			"3": {
+				"title": "Place Bets",
+				"description": "Use expert predictions to make smart bets.",
+				"icon": "fas fa-futbol",
+				"iconClass": "text-warning"
+			},
+			"4": {
+				"title": "Win Rewards",
+				"description": "Enjoy your winnings and maximize profits.",
+				"icon": "fas fa-trophy",
+				"iconClass": "text-danger"
+			}
+		}
+	},
+	"footer": {
+		"seamlessCommunication": {
+			"title": "Do you need a Seamless Communication?",
+			"description": "Email us to",
+			"email": "support@thebettortips.com"
+		},
+		"startWinning": {
+			"title": "How About You Start Winning?",
+			"description": "Sign up now to have a beautiful journey",
+			"cta": "Click to Sign Up"
+		},
+		"moreForGood": {
+			"title": "More for Good",
+			"links": {
+				"faq": "FAQ",
+				"documentation": "Documentations",
+				"videoTuts": "Video Tuts",
+				"changelog": "Changelog",
+				"supportForum": "Support Forum",
+				"blog": "Blog"
+			}
+		},
+		"stayConnected": {
+			"title": "Stay Connected",
+			"socials": {
+				"facebook": "Facebook",
+				"twitter": "Twitter",
+				"instagram": "Instagram"
+			}
+		},
+		"copyright": {
+			"text": "Copyright &copy; {{ AppName }} 2023"
+		},
+		"menu": {
+			"about": "About",
+			"support": "Support",
+			"purchase": "Purchase"
+		}
+	},
+	"nav": {
+		"home": "Home",
+		"howItWorks": "How it Works",
+		"features": "Features",
+		"projects": "Projects",
+		"signIn": "Sign In"
+	},
+
+	"authModal": {
+		"login": {
+			"title": "Sign In to Good",
+			"newHere": "New Here?",
+			"createAccount": "Create an Account",
+			"emailLabel": "Email",
+			"passwordLabel": "Password",
+			"forgotPassword": "Forgot Password?",
+			"submitText": "Continue",
+			"loadingText": "Signing In..."
+		},
+		"register": {
+			"title": "Create an Account",
+			"alreadyHaveAccount": "Already have an account?",
+			"signIn": "Sign in here",
+			"nameLabel": "Name",
+			"emailLabel": "Email",
+			"passwordLabel": "Password",
+			"confirmPasswordLabel": "Confirm Password",
+			"passwordHint": "Use 8 or more characters with a mix of letters, numbers & symbols.",
+			"agreeTerms": "I Agree",
+			"termsLink": "Terms and conditions",
+			"submitText": "Submit",
+			"loadingText": "Please wait..."
+		},
+		"errors": {
+			"fillForm": "Please fill the form correctly",
+			"passwordMismatch": "Passwords don't match",
+			"invalidCredentials": "Unable to login. Check your credentials."
+		}
+	},
+
+	"app": {
+		"deactivate": {
+			"title": "Deactivate Account",
+			"noticeTitle": "You Are Deactivating Your Account",
+			"noticeDescription": "Please try to resolve any issue with support, this action is not reversible.",
+			"confirmText": "I confirm my account deactivation",
+			"button": "Deactivate Account",
+			"deleting": "Deleting...",
+			"alerts": {
+				"accountDeleted": "Account Deleted",
+				"failed": "Failed",
+				"checkToPermit": "Check yes to permit action"
+			}
+		},
+		"profile": {
+			"title": "Profile Details",
+			"avatar": "Avatar",
+			"avatarHint": "Allowed file types: png, jpg, jpeg.",
+			"changeAvatar": "Change avatar",
+			"cancelAvatar": "Cancel avatar",
+			"removeAvatar": "Remove avatar",
+			"fullName": "Full Name",
+			"phone": "Contact Phone",
+			"phoneHint": "(optional)",
+			"phoneTooltip": "Phone number must be active",
+			"address": "Address",
+			"country": "Country",
+			"city": "City",
+			"zip": "ZIP Code",
+			"zipHint": "(optional)",
+			"discard": "Discard",
+			"saveChanges": "Save Changes",
+			"saving": "Saving...",
+			"alerts": {
+				"newImageSelected": "New image selected",
+				"accountUpdated": "Success",
+				"failed": "Failed",
+				"checkConnection": "Please check your connection.",
+				"fillFormCorrectly": "Fill form correctly"
+			}
+		},
+		"subscr": {
+			"title": "Available Subscriptions",
+			"notice": {
+				"text": "Select any of the available subscription plans for best outcome or contact support for personalised plans."
+			}
+		},
+		"overview": {
+			"title": "Overview",
+			"notSubscribed": "Not Subscribed",
+			"subscribe": "Subscribe",
+			"notice": {
+				"title": "We need your attention!",
+				"text": "Subscribe to a plan now.",
+				"link": "Click to Subscribe"
+			},
+			"mySubscriptions": {
+				"title": "My Subscriptions",
+				"noSubscriptions": "No subscriptions found"
+			}
+		},
+		"tips": {
+			"title": "Tips",
+			"notice": {
+				"heading": "Your activated tips will show here",
+				"text": "Make sure to subscribe and contact support at will to get your instant tips.",
+				"supportButton": "Support"
+			}
+		},
+		"navs": {
+			"overview": "Overview",
+			"tips": "Tips",
+			"subscriptionPlans": "Subscription Plans",
+			"profileDetails": "Profile Details",
+			"deactivateAccount": "Deactivate Account"
+		}
+	}
+}

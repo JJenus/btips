@@ -1,33 +1,33 @@
 <script setup>
-import axios from "axios";
-import { onMounted, ref } from "vue";
-import Plan from "@/components/admin/Plan.vue";
+	import axios from "axios";
+	import { onMounted, ref } from "vue";
+	import Plan from "@/components/admin/Plan.vue";
 
-const env = import.meta.env;
-const plans = ref([]);
+	const env = import.meta.env;
+	const plans = ref([]);
 
-async function loadPlans() {
-	let config = {
-		method: "GET",
-		url: `${env.VITE_BE_API}/subscriptions?type=primary`,
-	};
+	async function loadPlans() {
+		let config = {
+			method: "GET",
+			url: `${env.VITE_BE_API}/subscriptions?type=primary`,
+		};
 
-	axios
-		.request(config)
-		.then((res) => {
-			window.debug.log(res);
-			let data = res.data;
-			plans.value = data;
-		})
-		.catch((error) => {
-			window.debug.log(error);
-		})
-		.finally(() => {});
-}
+		axios
+			.request(config)
+			.then((res) => {
+				window.debug.log(res);
+				let data = res.data;
+				plans.value = data;
+			})
+			.catch((error) => {
+				window.debug.log(error);
+			})
+			.finally(() => {});
+	}
 
-onMounted(() => {
-	loadPlans();
-});
+	onMounted(() => {
+		loadPlans();
+	});
 </script>
 
 <template>
@@ -46,7 +46,7 @@ onMounted(() => {
 			aria-controls="kt_account_connected_accounts"
 		>
 			<div class="card-title m-0">
-				<h3 class="fw-bold m-0">Available Subscriptions</h3>
+				<h3 class="fw-bold m-0">{{ $t("app.subscr.title") }}</h3>
 			</div>
 		</div>
 		<!--end::Card header-->
@@ -88,9 +88,7 @@ onMounted(() => {
 						<!--begin::Content-->
 						<div class="fw-semibold">
 							<div class="fs-6 text-gray-700">
-								Select any of the available subscription plans
-								for best outcome or contact supprt for
-								personalised plans.
+								{{ $t("app.subscr.notice.text") }}
 							</div>
 						</div>
 						<!--end::Content-->
@@ -100,7 +98,7 @@ onMounted(() => {
 				<!--end::Notice-->
 
 				<!--begin::Items-->
-				<div class="py-2 row row-cols-md-2 row-cols-lg-3">
+				<div class="py-2 row row-cols-md-2 row-cols-lg-3 g-4">
 					<Plan v-for="plan in plans" :plan="plan" />
 				</div>
 				<!--end::Items-->
