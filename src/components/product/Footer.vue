@@ -137,12 +137,6 @@
 					<span class="mx-5 fs-6 fw-semibold text-gray-700 pt-1">
 						Copyright &copy; {{ AppName }} 2023
 					</span>
-
-					<div
-						class="menu fw-semibold"
-					>
-						<LangSelector :showLag="true" class="me-3" />
-					</div>
 				</div>
 			</div>
 		</div>

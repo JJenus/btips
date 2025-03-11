@@ -1,6 +1,6 @@
 <script setup>
 	import { inject } from "vue";
-	import LangSelector from "../LangSelector.vue";
+	import SelectLang from "../SelectLang.vue";
 
 	const signIn = inject("authMode");
 </script>
@@ -134,22 +134,29 @@
 						<!--end::Menu-->
 					</div>
 				</div>
-				
+
 				<!--end::Menu wrapper-->
 				<!-- <LangSelector :showLag="true" class="me-3" /> -->
 
 				<!--begin::Toolbar-->
-				<div
-					class="flex-equal text-end ms-1 position-relative z-index-2"
-				>
-					<button
-						data-bs-toggle="modal"
-						data-bs-target="#authModal"
-						@click="signIn = 'login'"
-						class="btn btn-danger"
+
+				<div class="ms-auto text-end z-index-2">
+					<div
+						class="d-flex gap-3 align-items-center justify-content-center"
 					>
-						{{ $t("nav.signIn") }}
-					</button>
+						<SelectLang />
+
+						<div class="d-flex">
+							<button
+								data-bs-toggle="modal"
+								data-bs-target="#authModal"
+								@click="signIn = 'login'"
+								class="btn btn-danger"
+							>
+								{{ $t("nav.signIn") }}
+							</button>
+						</div>
+					</div>
 				</div>
 				<!--end::Toolbar-->
 			</div>
