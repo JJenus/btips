@@ -120,7 +120,7 @@
 
 					<!--begin::Price-->
 					<div class="text-center">
-						<span class="mb-2 text-primary">$</span>
+						<span class="mb-2 text-primary">{{user.currency || "$"}}</span>
 
 						<span class="fs-3x fw-bold text-primary">
 							{{ plan.amount }}

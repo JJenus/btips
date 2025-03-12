@@ -159,7 +159,8 @@
 			"agreeTerms": "I Agree",
 			"termsLink": "Terms and conditions",
 			"submitText": "Submit",
-			"loadingText": "Please wait..."
+			"loadingText": "Please wait...",
+			"currency": "currency"
 		},
 		"errors": {
 			"fillForm": "Please fill the form correctly",

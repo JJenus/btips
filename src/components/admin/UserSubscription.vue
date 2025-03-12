@@ -13,6 +13,8 @@
 	let subscription = props.sub;
 	const loading = ref(false);
 
+	const appUser = inject("user", user.getUser());
+
 	const loadSubscriptions = inject("loadSubs");
 
 	function confirm() {
@@ -109,7 +111,7 @@
 			<div
 				class="mt-3 fs-6 d-flex justify-content-between align-items-center"
 			>
-				<span> $ {{ sub.subscription.amount }} </span>
+				<span> {{appUser.currency || "USD"}} {{ sub.subscription.amount }} </span>
 
 				<div class="d-flex">
 					<a

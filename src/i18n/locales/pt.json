@@ -159,7 +159,8 @@
 			"agreeTerms": "Eu Concordo",
 			"termsLink": "Termos e condições",
 			"submitText": "Enviar",
-			"loadingText": "Por favor, aguarde..."
+			"loadingText": "Por favor, aguarde...",
+			"currency": "currency"
 		},
 		"errors": {
 			"fillForm": "Preencha o formulário corretamente",
