@@ -31,12 +31,11 @@
 
 <template>
 	<div
-		:class="showLang ? 'px-5' : ''"
-		class="menu-item"
+		class="menu-item px-5"
 		data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
 		data-kt-menu-placement="left-start"
 	>
-		<a role="btn" :class="showLang ? 'px-5' : ''">
+		<a role="btn" :class="showLang ? 'menu-link' : ''" class="px-5">
 			<span v-if="showLang" class="menu-title position-relative">
 				{{ $t("locale.lang") }}
 
@@ -52,10 +51,11 @@
 				</span>
 			</span>
 
-			<span v-else class="menu-title position-relative">
-				<span class="fs-8 rounded bg-light p-0 m-0">
+			<span v-else class="menu-title">
+				<span class="fs-8 rounded bg-light px-3 py-2 end-0">
+					{{ $t("locale.locale") }}
 					<img
-						class="h-20px rounded-0"
+						class="w-15px h-15px rounded-1 ms-2"
 						:src="$t('locale.flag')"
 						:alt="$t('locale.locale')"
 					/>

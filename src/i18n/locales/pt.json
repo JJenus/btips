@@ -160,7 +160,7 @@
 			"termsLink": "Termos e condições",
 			"submitText": "Enviar",
 			"loadingText": "Por favor, aguarde...",
-			"currency": "currency"
+			"currency": "moeda"
 		},
 		"errors": {
 			"fillForm": "Preencha o formulário corretamente",
